@@ -43,6 +43,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 
