@@ -11,6 +11,116 @@
 #include "InputActionValue.h"
 
 
+void ARAC_CPP_Character::StartDash()
+{
+	UE_LOG(LogTemp, Warning, TEXT("LastInput=%s  ActorForward=%s  ControlYaw=%.2f"),
+	*GetLastMovementInputVector().ToString(),
+	*GetActorForwardVector().ToString(),
+	Controller ? Controller->GetControlRotation().Yaw : -999.f
+);
+	
+	if (!bCanDash || bIsDashing)
+		return;
+	
+	UCharacterMovementComponent* MoveComp = GetCharacterMovement();
+	if (!MoveComp)
+		return;
+	
+	// 1. 방향 결정 : "현재 이동 입력"이 있으면 그쪽, 아니면 forward
+	FVector InputDir = GetLastMovementInputVector();
+	DashDir = InputDir.IsNearlyZero() ? GetActorForwardVector() : InputDir.GetSafeNormal2D();
+	
+	DashDir.Z = 0.f;
+	DashDir = DashDir.GetSafeNormal();
+	
+	// 2. 시작 / 목표
+	DashStart = GetActorLocation();
+	DashTarget = DashStart + DashDir * DashDistance;
+	
+	UE_LOG(LogTemp, Warning, TEXT("DashStart=%s DashDir=%s DashTarget=%s"),
+	*DashStart.ToString(),
+	*DashDir.ToString(),
+	*DashTarget.ToString()
+);
+	
+	// 3. 상태 전환
+	bIsDashing = true;
+	bCanDash = false;
+	bInvincible = true;
+	DashElapsed = 0.f;
+	
+	// 4. 대쉬 중 캐릭터 무브먼트 영향 최소화
+	MoveComp->StopMovementImmediately();
+	MoveComp->SetMovementMode(EMovementMode::MOVE_Flying);
+	MoveComp->Velocity = FVector::ZeroVector;
+	
+	
+	GetWorldTimerManager().ClearTimer(DashCooldownHandle);
+}
+
+void ARAC_CPP_Character::TickDash(float DeltaTime)
+{
+	DashElapsed += DeltaTime;
+	
+	float Alpha = FMath::Clamp(DashElapsed/DashDuration, 0.f, 1.f);
+	
+	//Ease 적용
+	float T = Alpha;
+	if (DashEaseCurve)
+	{
+		T = DashEaseCurve->GetFloatValue(Alpha);
+	}
+	else
+	{
+		T = FMath::InterpEaseOut(0.f,1.f,Alpha,3.f);
+	}
+	
+	FVector NewPos = FMath::Lerp(DashStart,DashTarget,T);
+	
+	FHitResult Hit;
+	SetActorLocation(NewPos,true,&Hit,ETeleportType::None);
+	
+	if (Hit.bBlockingHit)
+	{
+		EndDash(true);
+		return;
+	}
+	if (Alpha >= 1.f)
+	{
+		EndDash(false);
+	}
+}
+
+void ARAC_CPP_Character::EndDash(bool bInterrupted)
+{
+	if (!bIsDashing) return;
+
+	bIsDashing = false;
+	bInvincible = false;
+
+	if (UCharacterMovementComponent* MoveComp = GetCharacterMovement())
+	{
+		MoveComp->SetMovementMode(EMovementMode::MOVE_Walking);
+
+		// 팬텀대쉬 느낌: 끝에서 "툭" 멈추기
+		MoveComp->Velocity = FVector::ZeroVector;
+
+		// (옵션) 살짝 관성 남기고 싶으면:
+		// MoveComp->Velocity = DashDir * 200.f;
+	}
+
+	// 쿨다운 끝나면 다시 대쉬 가능
+	GetWorldTimerManager().SetTimer(
+		DashCooldownHandle,
+		[this]()
+		{
+			bCanDash = true;
+		},
+		DashCooldown,
+		false
+	);
+}
+
 // Sets default values
 ARAC_CPP_Character::ARAC_CPP_Character()
 {
@@ -60,11 +170,29 @@ void ARAC_CPP_Character::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	
-	UE_LOG(LogTemp, Warning, TEXT("IsAiming: %s, OrientRotation: %s, UseControllerYaw: %s"), 
+	//로그확인
+	/*UE_LOG(LogTemp, Warning, TEXT("IsAiming: %s, IsFireHold: %s OrientRotation: %s, UseControllerYaw: %s"), 
 	IsAiming ? TEXT("True") : TEXT("False"), 
+	IsFireHold ?  TEXT("True") : TEXT("False"), 
 	GetCharacterMovement()->bOrientRotationToMovement ? TEXT("True") : TEXT("False"),
-	bUseControllerRotationYaw ? TEXT("True") : TEXT("False"));
+	bUseControllerRotationYaw ? TEXT("True") : TEXT("False"));*/
+	
+	if (bIsDashing)
+	{
+		TickDash(DeltaTime);
+	}
+	
+	//에임 도는거 방지
+	const bool bLockToController = (IsAiming || IsFireHold);
+	if (bLockToController && Controller)
+	{
+		const float TargetYaw = Controller->GetControlRotation().Yaw;
+		const FRotator Current = GetActorRotation();
+		const FRotator Target(0.f,TargetYaw,0.f);
+		
+		const FRotator NewRot = FMath::RInterpTo(Current,Target,DeltaTime,AimTurnSpeed);
+		SetActorRotation(NewRot);
+	}
 	
 	//1. Aim Alpha 계산
 	float TargetAlpha = IsAiming ? 1.0f : 0.0f;
@@ -110,9 +238,12 @@ void ARAC_CPP_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 		//Shooting
 		if (ShootAction)
 		{
-			EnhancedInputComponent->BindAction(AimAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::Shoot);
-			EnhancedInputComponent->BindAction(AimAction, ETriggerEvent::Completed, this, &ARAC_CPP_Character::Shoot);
+			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::Shoot);
+			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Completed, this, &ARAC_CPP_Character::Shoot);
 		}
+		
+		//Dash
+		EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::Dash);
 	}
 	else
 	{
@@ -184,16 +315,24 @@ void ARAC_CPP_Character::Aim(const FInputActionValue& Value)
 
 void ARAC_CPP_Character::Shoot(const FInputActionValue& Value)
 {
-	bool FireHold = Value.Get<bool>();
-	if (Controller != nullptr)
+	IsFireHold = Value.Get<bool>();
+	if (Controller)
 	{
-		IsFireHold = FireHold;
+		bUseControllerRotationYaw = IsFireHold;
+		if (GetCharacterMovement())
+		{
+			GetCharacterMovement()->bOrientRotationToMovement = !IsAiming;
+		}
 	}
 }
 
 void ARAC_CPP_Character::Dash(const FInputActionValue& Value)
 {
-	
+	StartDash();
+}
+
+void ARAC_CPP_Character::Melee(const FInputActionValue& Value)
+{
 }
 
 

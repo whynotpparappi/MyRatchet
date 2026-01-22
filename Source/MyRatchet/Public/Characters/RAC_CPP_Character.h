@@ -52,6 +52,35 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
 	UInputAction* MeleeAction;
 	
+	//AimTurnSpeed
+	UPROPERTY(EditAnywhere, Category="AimTurnning")
+	float AimTurnSpeed = 12.f;
+	
+	//Dash
+	UPROPERTY(EditAnywhere, Category="Dash")
+	float DashDistance = 600.f;
+	UPROPERTY(EditAnywhere, Category="Dash")
+	float DashDuration = 0.12f;
+	UPROPERTY(EditAnywhere, Category="Dash")
+	UCurveFloat* DashEaseCurve = nullptr; //Ease 곡선
+	UPROPERTY(EditAnywhere, Category="Dash")
+	float DashCooldown = 0.35f;
+	
+	bool bIsDashing = false;
+	bool bCanDash = true;
+	bool bInvincible = false;
+	
+	FVector DashStart;
+	FVector DashTarget;
+	FVector DashDir;
+	float DashElapsed = 0.f;
+	
+	FTimerHandle DashCooldownHandle;
+	
+	void StartDash();
+	void TickDash(float DeltaTime);
+	void EndDash(bool bInterrupted);
+	
 public:
 	// Sets default values for this character's properties
 	ARAC_CPP_Character();
@@ -75,6 +104,7 @@ protected:
 	void Aim(const FInputActionValue& Value);
 	void Shoot(const FInputActionValue& Value);
 	void Dash(const FInputActionValue& Value);
+	void Melee(const FInputActionValue& Value);
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
 	bool IsAiming = false;
