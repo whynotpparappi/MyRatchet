@@ -12,15 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/RAC_PlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/RAC_PlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" afterDir="false" />
-    </list>
+    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +167,7 @@
       <option name="presentableId" value="Default" />
       <updated>1769061296198</updated>
       <workItem from="1769061307339" duration="5330000" />
-      <workItem from="1769066687170" duration="10593000" />
+      <workItem from="1769066687170" duration="11116000" />
     </task>
     <servers />
   </component>
