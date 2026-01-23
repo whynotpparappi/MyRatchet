@@ -386,8 +386,6 @@ void ARAC_CPP_Character::OnJumpCompleted()
 		StopGlide();
 }
 
-
-
 void ARAC_CPP_Character::TryStartGlideFromHold()
 {
 	UE_LOG(LogTemp, Warning, TEXT("HoldReached bJumpHeld=%d Falling=%d VelZ=%.2f"),
