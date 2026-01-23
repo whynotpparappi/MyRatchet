@@ -9,6 +9,7 @@
 #include "EnhancedInputComponent.h"
 
 #include "InputActionValue.h"
+#include "Styling/StarshipCoreStyle.h"
 
 
 void ARAC_CPP_Character::StartDash()
@@ -25,6 +26,17 @@ void ARAC_CPP_Character::StartDash()
 	UCharacterMovementComponent* MoveComp = GetCharacterMovement();
 	if (!MoveComp)
 		return;
+	
+	// if (bUseAfterImage && AfterImageMaterial)
+	// {
+	// 	GetWorldTimerManager().SetTimer(
+	// 	AfterImageTimerHandle,
+	// 	this,
+	// 	&ARAC_CPP_Character::SpawnAfterImage,
+	// 	AfterImageInterval,
+	// 	true
+	// 	);
+	// }
 	
 	// 1. 방향 결정 : "현재 이동 입력"이 있으면 그쪽, 아니면 forward
 	FVector InputDir = GetLastMovementInputVector();
@@ -97,6 +109,7 @@ void ARAC_CPP_Character::EndDash(bool bInterrupted)
 
 	bIsDashing = false;
 	bInvincible = false;
+	//GetWorldTimerManager().ClearTimer(AfterImageTimerHandle);
 
 	if (UCharacterMovementComponent* MoveComp = GetCharacterMovement())
 	{
@@ -121,6 +134,11 @@ void ARAC_CPP_Character::EndDash(bool bInterrupted)
 	);
 }
 
+// void ARAC_CPP_Character::SpawnAfterImage()
+// {
+// 	//
+//}
+
 // Sets default values
 ARAC_CPP_Character::ARAC_CPP_Character()
 {
@@ -137,10 +155,11 @@ ARAC_CPP_Character::ARAC_CPP_Character()
 	GetCharacterMovement()->bOrientRotationToMovement = true; //입력된 방향으로 캐릭터가 움직인다.
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); //Z측기준으로 회전속도 540부여
 
+	JumpMaxCount=2;
+
 	GetCharacterMovement()->JumpZVelocity = 900.0f; //점프시 Z축 속도
 	GetCharacterMovement()->GravityScale = 1.5f;
 	GetCharacterMovement()->AirControl = 1.0f; //공중상태에서 떠있는 속도를 제어
-	GetCharacterMovement()->MaxJumpApexAttemptsPerSimulation = 2;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f; //최대걷는속도
 	GetCharacterMovement()->BrakingDecelerationWalking = 2048.0f; //제동속도
 	
@@ -163,6 +182,7 @@ void ARAC_CPP_Character::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	DefaultGravityScale = GetCharacterMovement()->GravityScale;
 }
 
 // Called every frame
@@ -170,16 +190,20 @@ void ARAC_CPP_Character::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	//로그확인
-	/*UE_LOG(LogTemp, Warning, TEXT("IsAiming: %s, IsFireHold: %s OrientRotation: %s, UseControllerYaw: %s"), 
-	IsAiming ? TEXT("True") : TEXT("False"), 
-	IsFireHold ?  TEXT("True") : TEXT("False"), 
-	GetCharacterMovement()->bOrientRotationToMovement ? TEXT("True") : TEXT("False"),
-	bUseControllerRotationYaw ? TEXT("True") : TEXT("False"));*/
 	
+
 	if (bIsDashing)
 	{
 		TickDash(DeltaTime);
+	}
+	
+	if (!bIsGliding
+		&& bGlideRequested
+		&& bJumpHeld
+		&& GetCharacterMovement()->IsFalling()
+		&& GetVelocity().Z < 0.f)
+	{
+		StartGlide();
 	}
 	
 	//에임 도는거 방지
@@ -205,7 +229,6 @@ void ARAC_CPP_Character::Tick(float DeltaTime)
 	//3. 카메라 위치 적용
 	FVector NewLocation = FMath::Lerp(FVector::ZeroVector, AimingCameraLocation, AimAlpha);
 	FollowCamera->SetRelativeLocation(NewLocation);
-
 }
 
 // Called to bind functionality to input
@@ -222,8 +245,8 @@ void ARAC_CPP_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		//jump
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::OnJumpStarted);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ARAC_CPP_Character::OnJumpCompleted);
 
 		//Move
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARAC_CPP_Character::Move);
@@ -336,6 +359,92 @@ void ARAC_CPP_Character::Melee(const FInputActionValue& Value)
 }
 
 
+// -----------------Glide-----------------
+void ARAC_CPP_Character::OnJumpStarted()
+{
+	bJumpHeld = true;
+	bGlideRequested = false;
+	
+	GetWorldTimerManager().SetTimer(
+		GlideHoldTimerHandle,
+		this,
+		&ThisClass::TryStartGlideFromHold,
+		GlideHoldThreshold,
+		false);
+	
+	Jump();
+}
+
+void ARAC_CPP_Character::OnJumpCompleted()
+{
+	bJumpHeld = false;
+	GetWorldTimerManager().ClearTimer(GlideHoldTimerHandle);
+	
+	bGlideRequested = false;
+	
+	if (bIsGliding)
+		StopGlide();
+}
 
 
 
+void ARAC_CPP_Character::TryStartGlideFromHold()
+{
+	UE_LOG(LogTemp, Warning, TEXT("HoldReached bJumpHeld=%d Falling=%d VelZ=%.2f"),
+		bJumpHeld,
+		GetCharacterMovement()->IsFalling(),
+		GetVelocity().Z);
+	if (!bJumpHeld) return;
+
+	bGlideRequested = true;
+}
+
+
+void ARAC_CPP_Character::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+{
+	Super::OnMovementModeChanged(PrevMovementMode, PreviousCustomMode);
+	const bool bNowFalling = GetCharacterMovement()->IsFalling();
+	
+	UE_LOG(LogTemp, Warning, TEXT("ModeChanged NowFalling=%d Requested=%d Held=%d VelZ=%.2f"),
+		GetCharacterMovement()->IsFalling(),
+		bGlideRequested,
+		bJumpHeld,
+		GetVelocity().Z);
+	
+	if(bNowFalling && bGlideRequested && bJumpHeld && !bIsGliding)
+	{
+		// if (GetVelocity().Z <= 0.f)
+		// {
+		// 	StartGlide();
+		// }
+	}
+	
+}
+
+void ARAC_CPP_Character::StartGlide()
+{
+	UE_LOG(LogTemp,Warning,TEXT("GlideStart"));
+	if (bIsGliding) return;
+	if (!GetCharacterMovement()->IsFalling()) return;
+	
+	bIsGliding=true;
+	
+    UCharacterMovementComponent* Move = GetCharacterMovement();
+	
+	Move->GravityScale = GlideGravityScale;
+}
+
+void ARAC_CPP_Character::StopGlide()
+{
+	if (!bIsGliding) return;
+	bIsGliding=false;
+	
+    UCharacterMovementComponent* Move = GetCharacterMovement();
+	Move->GravityScale = DefaultGravityScale;
+}
+
+void ARAC_CPP_Character::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+	StopGlide();
+}

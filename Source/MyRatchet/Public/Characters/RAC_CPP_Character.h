@@ -57,6 +57,19 @@ private:
 	float AimTurnSpeed = 12.f;
 	
 	//Dash
+	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
+	// bool bUseAfterImage;
+	//
+	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
+	// float AfterImageInterval = 0.03f;
+	//
+	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
+	// float AfterImageLifeTime = 0.18f;
+	//
+	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
+	// UMaterialInterface* AfterImageMaterial = nullptr;
+	
+	// <<<   Dash   >>>
 	UPROPERTY(EditAnywhere, Category="Dash")
 	float DashDistance = 600.f;
 	UPROPERTY(EditAnywhere, Category="Dash")
@@ -76,11 +89,45 @@ private:
 	float DashElapsed = 0.f;
 	
 	FTimerHandle DashCooldownHandle;
+	//FTimerHandle AfterImageTimerHandle;
 	
 	void StartDash();
 	void TickDash(float DeltaTime);
 	void EndDash(bool bInterrupted);
 	
+	//void SpawnAfterImage();
+	
+	
+	// <<<  Glide   >>>
+public:
+	UPROPERTY(editAnywhere, BlueprintReadOnly, Category="Glide")
+	bool bJumpHeld = false;
+	
+	UPROPERTY(editAnywhere, BlueprintReadOnly, Category="Glide")
+	bool bGlideRequested = false;
+	
+	UPROPERTY(editAnywhere, BlueprintReadOnly, Category="Glide")
+	bool bIsGliding = false;
+	
+private:
+	FTimerHandle GlideHoldTimerHandle;
+
+	float GlideHoldThreshold = 0.25f;
+	
+	
+	float GlideGravityScale = 0.3f;
+	float GlideFallSpeed = -300.0f;
+	
+	bool bWantsToGlide;
+	float DefaultGravityScale = 1.5f;
+	
+	UPROPERTY(EditAnywhere,Category="Jump/Glide")
+	float GlideThreshold = 0.3f;
+	
+	UPROPERTY(EditAnywhere, Category="Jump/Glide")
+	float GlidingGravityScale = 0.2f;
+
+
 public:
 	// Sets default values for this character's properties
 	ARAC_CPP_Character();
@@ -98,6 +145,8 @@ public:
 
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
+	
+	
 protected:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
@@ -105,6 +154,20 @@ protected:
 	void Shoot(const FInputActionValue& Value);
 	void Dash(const FInputActionValue& Value);
 	void Melee(const FInputActionValue& Value);
+	
+	void OnJumpStarted();
+	
+	void OnJumpCompleted();
+	
+	void TryStartGlideFromHold();
+	
+	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
+
+	void StartGlide();
+	void StopGlide();
+	
+	virtual void Landed(const FHitResult& Hit) override;
+	
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
 	bool IsAiming = false;
@@ -120,4 +183,6 @@ public:
 	float DefaultFOV = 90.0f;
 	float AimingFOV = 60.0f;
 	FVector AimingCameraLocation = FVector(0.0f,50.0f,0.0f);
+
+
 };
