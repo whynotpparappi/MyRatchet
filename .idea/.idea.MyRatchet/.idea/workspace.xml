@@ -12,10 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,7 +175,7 @@
       <updated>1769061296198</updated>
       <workItem from="1769061307339" duration="5330000" />
       <workItem from="1769066687170" duration="11116000" />
-      <workItem from="1769124504151" duration="31463000" />
+      <workItem from="1769124504151" duration="32133000" />
     </task>
     <servers />
   </component>
