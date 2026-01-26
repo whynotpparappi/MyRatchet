@@ -143,25 +143,25 @@ void ARAC_CPP_Character::EndDash(bool bInterrupted)
 ARAC_CPP_Character::ARAC_CPP_Character()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = true; // 틱 사용
 	
-    GetCapsuleComponent()->InitCapsuleSize(42.0f, 95.0f);
+    GetCapsuleComponent()->InitCapsuleSize(42.0f, 95.0f); 	//캡슐 컴포넌트 생성
 	
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
-	bUseControllerRotationRoll = false;
+	bUseControllerRotationRoll = false;						// Pitch, Yaw, Roll ControllerRotation fasle로 
 	
 	//캐릭터 무브먼트 설정
-	GetCharacterMovement()->bOrientRotationToMovement = true; //입력된 방향으로 캐릭터가 움직인다.
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); //Z측기준으로 회전속도 540부여
+	GetCharacterMovement()->bOrientRotationToMovement = true; 				//입력된 방향으로 캐릭터가 움직인다.
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); 	//Z측기준으로 회전속도 540부여
 
-	JumpMaxCount=2;
+	JumpMaxCount=2;															//점프 맥스카운트 2로 설정
 
-	GetCharacterMovement()->JumpZVelocity = 900.0f; //점프시 Z축 속도
-	GetCharacterMovement()->GravityScale = 1.5f;
-	GetCharacterMovement()->AirControl = 1.0f; //공중상태에서 떠있는 속도를 제어
-	GetCharacterMovement()->MaxWalkSpeed = 600.0f; //최대걷는속도
-	GetCharacterMovement()->BrakingDecelerationWalking = 2048.0f; //제동속도
+	GetCharacterMovement()->JumpZVelocity = 900.0f; 						//점프시 Z축 속도
+	GetCharacterMovement()->GravityScale = 1.5f;							//중력 스케일
+	GetCharacterMovement()->AirControl = 1.0f; 								//공중상태에서 떠있는 속도를 제어
+	GetCharacterMovement()->MaxWalkSpeed = 600.0f; 							//최대걷는속도
+	GetCharacterMovement()->BrakingDecelerationWalking = 2048.0f; 			//제동속도
 	
 	//스프링암 세팅
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
