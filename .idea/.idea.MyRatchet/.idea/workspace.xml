@@ -14,8 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pr.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +192,7 @@
       <workItem from="1769124504151" duration="32133000" />
       <workItem from="1769388257907" duration="3332000" />
       <workItem from="1769413368282" duration="6657000" />
-      <workItem from="1769471526638" duration="10769000" />
+      <workItem from="1769471526638" duration="12155000" />
     </task>
     <servers />
   </component>
