@@ -122,7 +122,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
@@ -137,8 +136,6 @@ public:
 	void TryStartGlideFromHold();
 	
 protected:
-	
-	
 	
 	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
 

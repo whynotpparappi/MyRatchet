@@ -231,48 +231,6 @@ void ARAC_CPP_Character::Tick(float DeltaTime)
 	FollowCamera->SetRelativeLocation(NewLocation);
 }
 
-// Called to bind functionality to input
-void ARAC_CPP_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			Subsystem->AddMappingContext(CharacterMappingContext,0);
-		}
-	}
-	
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
-	{
-		//jump
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::OnJumpStarted);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ARAC_CPP_Character::OnJumpCompleted);
-
-		//Move
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARAC_CPP_Character::Move);
-
-		//Look
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ARAC_CPP_Character::Look);
-		
-		//Aim
-		EnhancedInputComponent->BindAction(AimAction, ETriggerEvent::Triggered, this, &ARAC_CPP_Character::Aim);
-		EnhancedInputComponent->BindAction(AimAction, ETriggerEvent::Completed, this, &ARAC_CPP_Character::Aim);
-		
-		//Shooting
-		if (ShootAction)
-		{
-			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::Shoot);
-			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Completed, this, &ARAC_CPP_Character::Shoot);
-		}
-		
-		//Dash
-		EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Started, this, &ARAC_CPP_Character::Dash);
-	}
-	else
-	{
-		UE_LOG(LogTemp,Warning,TEXT("Failed to Find an EnhancedInputComponent"));
-	}
-}
 
 void ARAC_CPP_Character::OnConstruction(const FTransform& Transform)
 {
@@ -360,7 +318,7 @@ void ARAC_CPP_Character::Melee(const FInputActionValue& Value)
 
 
 // -----------------Glide-----------------
-void ARAC_CPP_Character::OnJumpStarted()
+void ARAC_CPP_Character::JumpStarted()
 {
 	bJumpHeld = true;
 	bGlideRequested = false;
@@ -375,7 +333,7 @@ void ARAC_CPP_Character::OnJumpStarted()
 	Jump();
 }
 
-void ARAC_CPP_Character::OnJumpCompleted()
+void ARAC_CPP_Character::JumpCompleted()
 {
 	bJumpHeld = false;
 	GetWorldTimerManager().ClearTimer(GlideHoldTimerHandle);
