@@ -6,11 +6,9 @@
 #include "GameFramework/Character.h"
 #include "RAC_CPP_Character.generated.h"
 
+struct FInputActionValue;
 class USpringArmComponent;
 class UCameraComponent;
-class UInputMappingContext;
-class UInputAction;
-struct FInputActionValue;
 
 UCLASS()
 
@@ -34,23 +32,6 @@ private:
 	UCameraComponent* FollowCamera;
 	
 	// inputAction, InputMappingContext (생성한 에셋을 변수에 담기)
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputMappingContext* CharacterMappingContext;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* MoveAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* LookAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* JumpAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* AimAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* DashAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* ShootAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
-	UInputAction* MeleeAction;
 	
 	//AimTurnSpeed
 	UPROPERTY(EditAnywhere, Category="AimTurnning")
@@ -100,13 +81,13 @@ private:
 	
 	// <<<  Glide   >>>
 public:
-	UPROPERTY(editAnywhere, BlueprintReadOnly, Category="Glide")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Glide")
 	bool bJumpHeld = false;
 	
-	UPROPERTY(editAnywhere, BlueprintReadOnly, Category="Glide")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Glide")
 	bool bGlideRequested = false;
 	
-	UPROPERTY(editAnywhere, BlueprintReadOnly, Category="Glide")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Glide")
 	bool bIsGliding = false;
 	
 private:
@@ -145,21 +126,19 @@ public:
 
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
-	
-	
-protected:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+	void JumpStarted();
+	void JumpCompleted();
 	void Aim(const FInputActionValue& Value);
 	void Shoot(const FInputActionValue& Value);
 	void Dash(const FInputActionValue& Value);
 	void Melee(const FInputActionValue& Value);
-	
-	void OnJumpStarted();
-	
-	void OnJumpCompleted();
-	
 	void TryStartGlideFromHold();
+	
+protected:
+	
+	
 	
 	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
 
