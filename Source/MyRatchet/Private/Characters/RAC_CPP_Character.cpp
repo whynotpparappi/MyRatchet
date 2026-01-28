@@ -1,16 +1,151 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Characters/RAC_CPP_Character.h"
+
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
-#include "EnhancedInputSubsystems.h"
-#include "EnhancedInputComponent.h"
-
+#include "Frameworks/RAC_PlayerState.h"
 #include "InputActionValue.h"
 #include "Styling/StarshipCoreStyle.h"
 
+// Sets default values
+ARAC_CPP_Character::ARAC_CPP_Character()
+{
+	
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+	
+	GetCapsuleComponent()->InitCapsuleSize(42.0f, 95.0f);
+	
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
+	
+	//캐릭터 무브먼트 설정
+	GetCharacterMovement()->bOrientRotationToMovement = true; //입력된 방향으로 캐릭터가 움직인다.
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); //Z측기준으로 회전속도 540부여
+
+	JumpMaxCount=2;
+
+	GetCharacterMovement()->JumpZVelocity = 900.0f; //점프시 Z축 속도
+	GetCharacterMovement()->GravityScale = 1.5f;
+	GetCharacterMovement()->AirControl = 1.0f; //공중상태에서 떠있는 속도를 제어
+	GetCharacterMovement()->MaxWalkSpeed = 600.0f; //최대걷는속도
+	GetCharacterMovement()->BrakingDecelerationWalking = 2048.0f; //제동속도
+	
+	//스프링암 세팅
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	CameraBoom->SetupAttachment(RootComponent);
+	CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, 110.0f));
+	CameraBoom->TargetArmLength = 500.0f;
+	CameraBoom->bUsePawnControlRotation = true; //컨트롤러에 따라 스프링암이 회전을 한다.
+	
+	//카메라 세팅
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+	FollowCamera->bUsePawnControlRotation = false; //컨트롤러에 따라 카메라 붐을 회전시킨다.
+
+}
+
+// Called when the game starts or when spawned
+void ARAC_CPP_Character::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	if (GetAbilitySystemComponent())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("GAS: Successfully linked to ASC on PlayerState!"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("GAS: Failed to find ASC! Check your PlayerState or Casting."));
+	}
+	
+	DefaultGravityScale = GetCharacterMovement()->GravityScale;
+}
+
+class UAbilitySystemComponent* ARAC_CPP_Character::GetAbilitySystemComponent() const
+{
+	// 1. 현재 캐릭터의 PlayerState를 가져옴
+	// ARAC_PlayerState가 사용자님이 만든 클래스 이름인지 확인하세요.
+	ARAC_PlayerState* PS = GetPlayerState<ARAC_PlayerState>();
+    
+	if (PS)
+	{
+		// 2. PlayerState가 가진 GetAbilitySystemComponent를 호출
+		return PS->GetAbilitySystemComponent();
+	}
+
+	return nullptr;
+}
+
+// Called every frame
+void ARAC_CPP_Character::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	
+	if (bIsDashing)
+	{
+		TickDash(DeltaTime);
+	}
+	
+	if (!bIsGliding
+		&& bGlideRequested
+		&& bJumpHeld
+		&& GetCharacterMovement()->IsFalling()
+		&& GetVelocity().Z < 0.f)
+	{
+		StartGlide();
+	}
+	
+	//에임 도는거 방지
+	const bool bLockToController = (IsAiming || IsFireHold);
+	if (bLockToController && Controller)
+	{
+		const float TargetYaw = Controller->GetControlRotation().Yaw;
+		const FRotator Current = GetActorRotation();
+		const FRotator Target(0.f,TargetYaw,0.f);
+		
+		const FRotator NewRot = FMath::RInterpTo(Current,Target,DeltaTime,AimTurnSpeed);
+		SetActorRotation(NewRot);
+	}
+	
+	//1. Aim Alpha 계산
+	float TargetAlpha = IsAiming ? 1.0f : 0.0f;
+	AimAlpha = FMath::FInterpTo(AimAlpha, TargetAlpha, DeltaTime, 15.0f);
+	
+	//2. FOV 적용 (Lerp + SetFieldOfView 매칭)
+	float NewFOV = FMath::Lerp(DefaultFOV, AimingFOV, AimAlpha);
+	FollowCamera->SetFieldOfView(NewFOV);
+	
+	//3. 카메라 위치 적용
+	FVector NewLocation = FMath::Lerp(FVector::ZeroVector, AimingCameraLocation, AimAlpha);
+	FollowCamera->SetRelativeLocation(NewLocation);
+}
+
+void ARAC_CPP_Character::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	ARAC_PlayerState* PS = GetPlayerState<ARAC_PlayerState>();
+	if (PS)
+	{
+		PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS,this);
+	}
+}
+
+void ARAC_CPP_Character::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	
+	ARAC_PlayerState* PS = GetPlayerState<ARAC_PlayerState>();
+	if (PS)
+	{
+		PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS,this);
+	}
+}
 
 void ARAC_CPP_Character::StartDash()
 {
@@ -134,104 +269,6 @@ void ARAC_CPP_Character::EndDash(bool bInterrupted)
 	);
 }
 
-// void ARAC_CPP_Character::SpawnAfterImage()
-// {
-// 	//
-//}
-
-// Sets default values
-ARAC_CPP_Character::ARAC_CPP_Character()
-{
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-	
-    GetCapsuleComponent()->InitCapsuleSize(42.0f, 95.0f);
-	
-	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
-	bUseControllerRotationRoll = false;
-	
-	//캐릭터 무브먼트 설정
-	GetCharacterMovement()->bOrientRotationToMovement = true; //입력된 방향으로 캐릭터가 움직인다.
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); //Z측기준으로 회전속도 540부여
-
-	JumpMaxCount=2;
-
-	GetCharacterMovement()->JumpZVelocity = 900.0f; //점프시 Z축 속도
-	GetCharacterMovement()->GravityScale = 1.5f;
-	GetCharacterMovement()->AirControl = 1.0f; //공중상태에서 떠있는 속도를 제어
-	GetCharacterMovement()->MaxWalkSpeed = 600.0f; //최대걷는속도
-	GetCharacterMovement()->BrakingDecelerationWalking = 2048.0f; //제동속도
-	
-	//스프링암 세팅
-	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, 110.0f));
-	CameraBoom->TargetArmLength = 500.0f;
-	CameraBoom->bUsePawnControlRotation = true; //컨트롤러에 따라 스프링암이 회전을 한다.
-	
-	//카메라 세팅
-	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-	FollowCamera->bUsePawnControlRotation = false; //컨트롤러에 따라 카메라 붐을 회전시킨다.
-
-}
-
-// Called when the game starts or when spawned
-void ARAC_CPP_Character::BeginPlay()
-{
-	Super::BeginPlay();
-	
-	DefaultGravityScale = GetCharacterMovement()->GravityScale;
-}
-
-// Called every frame
-void ARAC_CPP_Character::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	
-	
-
-	if (bIsDashing)
-	{
-		TickDash(DeltaTime);
-	}
-	
-	if (!bIsGliding
-		&& bGlideRequested
-		&& bJumpHeld
-		&& GetCharacterMovement()->IsFalling()
-		&& GetVelocity().Z < 0.f)
-	{
-		StartGlide();
-	}
-	
-	//에임 도는거 방지
-	const bool bLockToController = (IsAiming || IsFireHold);
-	if (bLockToController && Controller)
-	{
-		const float TargetYaw = Controller->GetControlRotation().Yaw;
-		const FRotator Current = GetActorRotation();
-		const FRotator Target(0.f,TargetYaw,0.f);
-		
-		const FRotator NewRot = FMath::RInterpTo(Current,Target,DeltaTime,AimTurnSpeed);
-		SetActorRotation(NewRot);
-	}
-	
-	//1. Aim Alpha 계산
-	float TargetAlpha = IsAiming ? 1.0f : 0.0f;
-	AimAlpha = FMath::FInterpTo(AimAlpha, TargetAlpha, DeltaTime, 15.0f);
-	
-	//2. FOV 적용 (Lerp + SetFieldOfView 매칭)
-	float NewFOV = FMath::Lerp(DefaultFOV, AimingFOV, AimAlpha);
-	FollowCamera->SetFieldOfView(NewFOV);
-	
-	//3. 카메라 위치 적용
-	FVector NewLocation = FMath::Lerp(FVector::ZeroVector, AimingCameraLocation, AimAlpha);
-	FollowCamera->SetRelativeLocation(NewLocation);
-}
-
-
 void ARAC_CPP_Character::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
@@ -314,8 +351,8 @@ void ARAC_CPP_Character::Dash(const FInputActionValue& Value)
 
 void ARAC_CPP_Character::Melee(const FInputActionValue& Value)
 {
+	
 }
-
 
 // -----------------Glide-----------------
 void ARAC_CPP_Character::JumpStarted()

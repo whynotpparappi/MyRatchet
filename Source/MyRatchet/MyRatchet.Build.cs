@@ -8,6 +8,14 @@ public class MyRatchet : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", 
+																	"CoreUObject",
+																	"Engine",
+																	"InputCore",
+																	"EnhancedInput",
+																	"GameplayAbilities",	// 게임플레이 어빌리티 추가
+																	"GameplayTags",			// 게임플레이 태그스
+																	"GameplayTasks"			// 게임플레이 태스크
+		});
 	}
 }

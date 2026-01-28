@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
 #include "RAC_CPP_Character.generated.h"
 
@@ -12,9 +13,28 @@ class UCameraComponent;
 
 UCLASS()
 
-class MYRATCHET_API ARAC_CPP_Character : public ACharacter
+class MYRATCHET_API ARAC_CPP_Character : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
+	
+public:
+	// Sets default values for this character's properties
+	ARAC_CPP_Character();
+	
+	
+protected:
+	
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+	virtual class UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void PossessedBy(AController* NewController) override;
+	
+	virtual void OnRep_PlayerState() override;
 	
 private:
 	
@@ -31,30 +51,15 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta= (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
 	
-	// inputAction, InputMappingContext (생성한 에셋을 변수에 담기)
-	
 	//AimTurnSpeed
 	UPROPERTY(EditAnywhere, Category="AimTurnning")
 	float AimTurnSpeed = 12.f;
-	
-	//Dash
-	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
-	// bool bUseAfterImage;
-	//
-	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
-	// float AfterImageInterval = 0.03f;
-	//
-	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
-	// float AfterImageLifeTime = 0.18f;
-	//
-	// UPROPERTY(EditAnywhere, Category="Dash-AfterImage")
-	// UMaterialInterface* AfterImageMaterial = nullptr;
 	
 	// <<<   Dash   >>>
 	UPROPERTY(EditAnywhere, Category="Dash")
 	float DashDistance = 600.f;
 	UPROPERTY(EditAnywhere, Category="Dash")
-	float DashDuration = 0.12f;
+	float DashDuration = 0.5f;
 	UPROPERTY(EditAnywhere, Category="Dash")
 	UCurveFloat* DashEaseCurve = nullptr; //Ease 곡선
 	UPROPERTY(EditAnywhere, Category="Dash")
@@ -79,7 +84,6 @@ private:
 	//void SpawnAfterImage();
 	
 	
-	// <<<  Glide   >>>
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Glide")
 	bool bJumpHeld = false;
@@ -91,10 +95,10 @@ public:
 	bool bIsGliding = false;
 	
 private:
+	// <<<  Glide   >>>
 	FTimerHandle GlideHoldTimerHandle;
 
 	float GlideHoldThreshold = 0.25f;
-	
 	
 	float GlideGravityScale = 0.3f;
 	float GlideFallSpeed = -300.0f;
@@ -109,22 +113,22 @@ private:
 	float GlidingGravityScale = 0.2f;
 
 
-public:
-	// Sets default values for this character's properties
-	ARAC_CPP_Character();
-
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-
-	virtual void OnConstruction(const FTransform& Transform) override;
 	
+	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
+
+	void StartGlide();
+	void StopGlide();
+	
+	virtual void Landed(const FHitResult& Hit) override;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
+	bool IsAiming = false;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
+	bool IsFireHold = false;
+	
+public:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 	void JumpStarted();
@@ -135,23 +139,8 @@ public:
 	void Melee(const FInputActionValue& Value);
 	void TryStartGlideFromHold();
 	
-protected:
+	virtual void OnConstruction(const FTransform& Transform) override;
 	
-	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
-
-	void StartGlide();
-	void StopGlide();
-	
-	virtual void Landed(const FHitResult& Hit) override;
-	
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
-	bool IsAiming = false;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
-	bool IsFireHold = false;
-	
-public:
 	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 	
