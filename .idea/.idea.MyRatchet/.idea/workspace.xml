@@ -14,53 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Anim/ABP_RAC_Wraith_AnimBlueprint1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Anim/ABP_RAC_Wraith_AnimBlueprint1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/Firing_Rifle1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/Firing_Rifle1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/IK_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/IK_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/IK_Retargeter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/IK_Retargeter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/character_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Anim/Custom_Animetion/character_Skeleton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Gamemode/BP_RAC_Cpp_GameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Gamemode/BP_RAC_Cpp_GameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Input/Move_Mapping.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Input/Move_Mapping.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/BP_Blaster.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/Test.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_c.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_fluids_c.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_fluids_g.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_g.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_glass_c.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_glass_g.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_glass_n.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_n.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_scan_c.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/blaster_screen_c.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_Combuster.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_Combuster_Glass.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_Combuster_Hoses.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_PhysicsAsset.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_Skeleton.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_bangle_v1_barrel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_bangle_v1_barrel_PhysicsAsset.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_bangle_v1_barrel_Skeleton.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_bangle_v5_barrel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_bangle_v5_barrel_PhysicsAsset.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_bangle_v5_barrel_Skeleton.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_old.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_old_PhysicsAsset.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blaster/wpn_blaster_combuster_old_Skeleton.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/P_Wraith_Primary_NoHit.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Weapons/RACWeapon.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Weapons/RACWeaponDataAsset.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/SK/EVAN6O1GUJKYWN1BRVPP1X.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyRatchet.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyRatchet.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/MyRatchet.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/MyRatchet.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +198,7 @@
       <workItem from="1769413368282" duration="6657000" />
       <workItem from="1769471526638" duration="15533000" />
       <workItem from="1769562969356" duration="1752000" />
-      <workItem from="1769565841160" duration="18925000" />
+      <workItem from="1769565841160" duration="20282000" />
     </task>
     <servers />
   </component>
