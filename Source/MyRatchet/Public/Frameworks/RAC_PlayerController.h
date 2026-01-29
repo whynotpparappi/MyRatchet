@@ -12,6 +12,7 @@
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class URAC_HUD_Widget;
 
 UCLASS()
 class MYRATCHET_API ARAC_PlayerController : public APlayerController
@@ -41,6 +42,14 @@ protected:
 	UInputAction* ShootAction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
 	UInputAction* MeleeAction;
+
+	// HUD Widget 클래스 (블루프린트에서 설정)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="UI", meta= (AllowPrivateAccess = "true"))
+	TSubclassOf<URAC_HUD_Widget> HUDWidgetClass;
+
+	// 생성된 HUD Widget 참조
+	UPROPERTY()
+	URAC_HUD_Widget* HUDWidget;
 	
 private:
 	void OnMove(const FInputActionValue& Value);

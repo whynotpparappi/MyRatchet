@@ -8,15 +8,16 @@
 #include "RAC_AttributeSet.generated.h"
 
 
-//매크로를 적용
+//매크로 적용
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
 		GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
 		GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
 		GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 		GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
-/**
- * 
- */
+
+//델리게이트 선언
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttributeEvent, float , OldValue, float , NewValue);
+
 UCLASS()
 class MYRATCHET_API URAC_AttributeSet : public UAttributeSet
 {
@@ -60,6 +61,16 @@ public:
 	FGameplayAttributeData DashCooldown;
 	ATTRIBUTE_ACCESSORS(URAC_AttributeSet, DashCooldown);
 	
-	// 데미지 처리를 위한 특수 함수 (나중에 구현)
+	// UI에서 바인딩할 이벤트
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FAttributeEvent OnHealthChanged;
+	
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FAttributeEvent OnBoltsChanged;
+
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FAttributeEvent OnAmmoChanged;
+	
+	// 스탯이 변경된 후 호출되는 GAS 내부 함수
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 };

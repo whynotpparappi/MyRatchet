@@ -342,6 +342,38 @@ void ARAC_CPP_Character::Shoot(const FInputActionValue& Value)
 			GetCharacterMovement()->bOrientRotationToMovement = !IsAiming;
 		}
 	}
+	// Send shooting intent to server to actually handle ammo consumption and firing
+	if (!HasAuthority())
+	{
+		ServerHandleShoot(IsFireHold);
+	}
+	else
+	{
+		// If we're already authority (e.g., single-player / server), handle directly
+		ServerHandleShoot_Implementation(IsFireHold);
+	}
+}
+
+void ARAC_CPP_Character::ServerHandleShoot_Implementation(bool bPressed)
+{
+	if (!bPressed) return; // only handle on press (single-shot)
+
+	ARAC_PlayerState* PS = GetPlayerState<ARAC_PlayerState>();
+	if (!PS || !PS->AttributeSet) return;
+
+	float CurrentAmmo = PS->AttributeSet->GetCurrentAmmo();
+	if (CurrentAmmo <= 0.f)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No ammo to shoot"));
+		return;
+	}
+
+	float NewAmmo = FMath::Max(0.0f, CurrentAmmo - 1.0f);
+	PS->AttributeSet->SetCurrentAmmo(NewAmmo);
+
+	UE_LOG(LogTemp, Log, TEXT("Fired weapon. Ammo: %.0f -> %.0f"), CurrentAmmo, NewAmmo);
+
+	// TODO: spawn projectile or perform hit trace here
 }
 
 void ARAC_CPP_Character::Dash(const FInputActionValue& Value)

@@ -8,6 +8,7 @@
 #include "InputActionValue.h"
 #include "GameFramework/Character.h"
 #include "Characters/RAC_CPP_Character.h"
+#include "Widgets/RAC_HUD_Widget.h"
 
 void ARAC_PlayerController::BeginPlay()
 {
@@ -16,6 +17,16 @@ void ARAC_PlayerController::BeginPlay()
 	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
 		Subsystem->AddMappingContext(CharacterMappingContext,0);
+	}
+
+	// HUD Widget 생성
+	if (HUDWidgetClass && IsLocalController())
+	{
+		HUDWidget = CreateWidget<URAC_HUD_Widget>(this, HUDWidgetClass);
+		if (HUDWidget)
+		{
+			HUDWidget->AddToViewport();
+		}
 	}
 }
 

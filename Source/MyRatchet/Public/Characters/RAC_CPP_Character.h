@@ -135,6 +135,11 @@ public:
 	void JumpCompleted();
 	void Aim(const FInputActionValue& Value);
 	void Shoot(const FInputActionValue& Value);
+    
+	// RPC to handle shooting on the server
+	UFUNCTION(Server, Reliable)
+	void ServerHandleShoot(bool bPressed);
+	void ServerHandleShoot_Implementation(bool bPressed);
 	void Dash(const FInputActionValue& Value);
 	void Melee(const FInputActionValue& Value);
 	void TryStartGlideFromHold();
