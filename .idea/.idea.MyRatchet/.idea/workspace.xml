@@ -14,22 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ParagonSerath/Characters/Heroes/Serath/SerathPlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ParagonSerath/Characters/Heroes/Serath/SerathPlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ParagonSerath/FX/Materials/Fire/M_Wing_Aura.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ParagonSerath/FX/Materials/Fire/M_Wing_Aura.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ParagonSerath/FX/Materials/Fire/M_Wing_Aura_Evil.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ParagonSerath/FX/Materials/Fire/M_Wing_Aura_Evil.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Framworks/Bp_RAC_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Framworks/Bp_RAC_PlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Maps/Basic_Map.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Maps/Basic_Map.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/1/A0/YWGH4SSB5DS85C86APHW9J.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/1/A0/YWGH4SSB5DS85C86APHW9J.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/5/28/WOIQR3YT9NYO68VQFH3IP9.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/5/28/WOIQR3YT9NYO68VQFH3IP9.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/A/NJ/75KDSR63EJ3XV7ML65D2ML.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/A/NJ/75KDSR63EJ3XV7ML65D2ML.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyRatchet.png" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyRatchet.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +204,7 @@
       <workItem from="1769565841160" duration="20877000" />
       <workItem from="1769646704862" duration="2818000" />
       <workItem from="1769652414296" duration="9220000" />
-      <workItem from="1769669425524" duration="1284000" />
+      <workItem from="1769669425524" duration="2538000" />
     </task>
     <servers />
   </component>
