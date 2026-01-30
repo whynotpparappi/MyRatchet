@@ -50,7 +50,7 @@ void URAC_HUD_Widget::BindToAttributeSet()
 	// 초기 UI 업데이트
 	UpdateHealthUI(AttributeSet->GetHealth(), AttributeSet->GetMaxHealth());
 	UpdateBoltsUI(AttributeSet->GetBolts());
-	UpdateAmmoUI(AttributeSet->GetCurrentAmmo(), AttributeSet->GetMaxAmmo());
+	UpdateAmmoUI(AttributeSet->GetAmmo(), AttributeSet->GetMaxAmmo());
 }
 
 void URAC_HUD_Widget::OnHealthChanged(float OldValue, float NewValue)

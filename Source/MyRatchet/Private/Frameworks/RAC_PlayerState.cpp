@@ -6,10 +6,8 @@
 
 ARAC_PlayerState::ARAC_PlayerState()
 {
-	// 1. ASC 생성
+	// 1. ASC 생성 (싱글 플레이이므로 리플리케이션 불필요)
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
-	
-	AbilitySystemComponent->SetIsReplicated(true);
 	
 	AttributeSet = CreateDefaultSubobject<URAC_AttributeSet>(TEXT("AtributeSet"));
 }

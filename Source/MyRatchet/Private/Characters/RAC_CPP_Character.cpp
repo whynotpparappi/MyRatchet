@@ -342,26 +342,18 @@ void ARAC_CPP_Character::Shoot(const FInputActionValue& Value)
 			GetCharacterMovement()->bOrientRotationToMovement = !IsAiming;
 		}
 	}
-	// Send shooting intent to server to actually handle ammo consumption and firing
-	if (!HasAuthority())
-	{
-		ServerHandleShoot(IsFireHold);
-	}
-	else
-	{
-		// If we're already authority (e.g., single-player / server), handle directly
-		ServerHandleShoot_Implementation(IsFireHold);
-	}
+	// 사격을 로컬에서 직접 처리합니다 (싱글 플레이)
+	HandleShoot(IsFireHold);
 }
 
-void ARAC_CPP_Character::ServerHandleShoot_Implementation(bool bPressed)
+void ARAC_CPP_Character::HandleShoot(bool bPressed)
 {
 	if (!bPressed) return; // only handle on press (single-shot)
 
 	ARAC_PlayerState* PS = GetPlayerState<ARAC_PlayerState>();
 	if (!PS || !PS->AttributeSet) return;
 
-	float CurrentAmmo = PS->AttributeSet->GetCurrentAmmo();
+	float CurrentAmmo = PS->AttributeSet->GetAmmo();
 	if (CurrentAmmo <= 0.f)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("No ammo to shoot"));
@@ -369,7 +361,7 @@ void ARAC_CPP_Character::ServerHandleShoot_Implementation(bool bPressed)
 	}
 
 	float NewAmmo = FMath::Max(0.0f, CurrentAmmo - 1.0f);
-	PS->AttributeSet->SetCurrentAmmo(NewAmmo);
+	PS->AttributeSet->SetAmmo(NewAmmo);
 
 	UE_LOG(LogTemp, Log, TEXT("Fired weapon. Ammo: %.0f -> %.0f"), CurrentAmmo, NewAmmo);
 

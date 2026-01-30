@@ -6,14 +6,19 @@
 
 URAC_AttributeSet::URAC_AttributeSet()
 {
+	// 1.
 	InitHealth(100.0f);
 	InitMaxHealth(100.0f);
-	InitBolts(0.0f);
 	InitExperience(0.0f);
+	InitLevel(1);
+	InitDamageMultiplier(1.f);
+	// 2.
+	InitBolts(0);
+	InitRaritanium(0);
+	// 3.
 	
-	InitCurrentAmmo(20.0f);
-	InitMaxAmmo(20.0f);
-	InitDamageMultiplier(1.0f);
+	InitAmmo(0);
+	InitMaxAmmo(150);
 	
 	InitDashCooldown(0.0f);
 }
@@ -25,16 +30,26 @@ void URAC_AttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 	// 어떤 스탯이 변했는지 확인
 	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
-		// 예: 체력이 MaxHealth를 넘지 못하게 하거나 0 아래로 내려가지 않게 클램핑
-		//SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
+		SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth())); // 체력 0~최대체력 사이로 제한
 		OnHealthChanged.Broadcast(0.f,GetHealth());
 	}
 	if (Data.EvaluatedData.Attribute == GetBoltsAttribute())
 	{
+		SetBolts(FMath::Max(0.0f, GetBolts()));						// 볼트 음수 방지
 		OnBoltsChanged.Broadcast(0.f,GetBolts());
 	}
-	if (Data.EvaluatedData.Attribute == GetCurrentAmmoAttribute())
+
+	if (Data.EvaluatedData.Attribute == GetAmmoAttribute())
 	{
-		OnAmmoChanged.Broadcast(0.f,GetCurrentAmmo());
+		SetAmmo(FMath::Clamp(GetAmmo(), 0.0f, GetMaxAmmo()));		// 탄약 0~최대탄약 사이로 제한
+		OnAmmoChanged.Broadcast(0.f, GetAmmo());
 	}
+
+	if (Data.EvaluatedData.Attribute == GetMaxAmmoAttribute())
+	{
+		SetMaxAmmo(FMath::Max(0.0f, GetMaxAmmo()));					// 최대탄약 음수 방지
+		SetAmmo(FMath::Clamp(GetAmmo(), 0.0f, GetMaxAmmo()));		// 탄약 0~최대탄약 사이로 제한	
+		OnAmmoChanged.Broadcast(0.f, GetAmmo());
+	}
+	
 }

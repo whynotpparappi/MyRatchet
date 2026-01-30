@@ -14,6 +14,74 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Functions/FX_EmissiveModulate.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Functions/FX_EmissiveModulate.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Functions/MF_DitheredRefraction.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Functions/MF_DitheredRefraction.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_CameraLens_Teleporting.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_CameraLens_Teleporting.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_Screen_Triangles.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_Screen_Triangles.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_Wraith_Drone_ElectroField.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_Wraith_Drone_ElectroField.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_Wraith_Upperbody_Drone_Inst.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/FX/M_Wraith_Upperbody_Drone_Inst.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/MLayer/MF_Wraithlatex.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/MLayer/MF_Wraithlatex.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/MLayer/T_TireRubber_R.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/MLayer/T_TireRubber_R.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/M_Wraith_Upperbody.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/Heroes/Wraith/M_Wraith_Upperbody.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Camera/Effects/SM_Camera_Mesh.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Camera/Effects/SM_Camera_Mesh.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Camera/Effects/T_Simple_Gradients_M.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Camera/Effects/T_Simple_Gradients_M.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/HitFlash.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/HitFlash.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_BrightnessAdjust.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_BrightnessAdjust.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_CharacterEffects.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_CharacterEffects.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_Character_MaterialLayerQuality.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_Character_MaterialLayerQuality.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_DeathFade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_DeathFade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_OrionCharacterAO.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_OrionCharacterAO.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_OrionRimlight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MF_OrionRimlight.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MF_BaseColorTintAndContrast.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MF_BaseColorTintAndContrast.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MF_RoughnessAdjustment.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MF_RoughnessAdjustment.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MLC_ScratchAndGrime.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MLC_ScratchAndGrime.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MLC_Standard.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/MaterialLayerConstructors/MLC_Standard.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/ParameterCollections/OrionGlobalGameplayCollection.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/ParameterCollections/OrionGlobalGameplayCollection.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/Noise/T_AtmosphericCloudNoise01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/Noise/T_AtmosphericCloudNoise01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/Noise/T_AtmosphericCloudNoise01_N.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/Noise/T_AtmosphericCloudNoise01_N.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/Noise/T_AtmosphericCloudNoise03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/Noise/T_AtmosphericCloudNoise03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/T_Black_Linear.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialFunctions/Textures/T_Black_Linear.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/ML__Blank.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/ML__Blank.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/ML_Metal_Scratched_Circular.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/ML_Metal_Scratched_Circular.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/ML_SoftMetal01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/ML_SoftMetal01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/ML_blue_Metal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/ML_blue_Metal.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_Blue_Metal02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_Blue_Metal02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_ML_Aluminum01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_ML_Aluminum01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_ML_Aluminum01_N.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_ML_Aluminum01_N.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_Metal_Scratched_Circular_01_COLOR.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_Metal_Scratched_Circular_01_COLOR.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_Metal_Scratched_Circular_01_N.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_Metal_Scratched_Circular_01_N.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_ScratchMask.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Metal/T_ScratchMask.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Painted/ML_MetallicClearCoat.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Painted/ML_MetallicClearCoat.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Painted/T_PaintScratches.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Painted/T_PaintScratches.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Rubber/T_Blank_N.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Rubber/T_Blank_N.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Rubber/T_ML_FineRubber_N.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Rubber/T_ML_FineRubber_N.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Synthetics/ML_SimpleEmissive_underGlass.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/Synthetics/ML_SimpleEmissive_underGlass.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/T_TestML_Mask.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Materials/MaterialLayers/T_TestML_Mask.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Meshes/Heroes/Wraith/FX/SM_Screen_Triangles.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Meshes/Heroes/Wraith/FX/SM_Screen_Triangles.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Energy/Electricity/T_Lightning_B_Tile_Chromatic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Energy/Electricity/T_Lightning_B_Tile_Chromatic.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/FluidPatterns/T_FluidTile01_DA.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/FluidPatterns/T_FluidTile01_DA.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_ElectroHex_Tile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_ElectroHex_Tile.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_BackPackbody_RGBA.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_BackPackbody_RGBA.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_UpperBody_Mask.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_UpperBody_Mask.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_UpperBody_Mask2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_UpperBody_Mask2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_Upperbody_RGBA.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_Upperbody_RGBA.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_upperbody_N_DEMO.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Heroes/Wraith/T_Wraith_upperbody_N_DEMO.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Masks/T_Holo_Scanlines.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Masks/T_Holo_Scanlines.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Tech/T_Triangle_Hex_Wireframe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Tech/T_Triangle_Hex_Wireframe.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Tile/Noise/T_Noise_Rough_Dark_Big.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/FX/Textures/Tile/Noise/T_Noise_Rough_Dark_Big.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Weapons/BPFL_WeaponTags.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Weapons/BP_WeaponBase.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Widgets/RAC_HUD_Widget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Widgets/RAC_HUD_Widget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_mds/Add_HUD.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_mds/Add_PlayerController.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_mds/Add_RAC_Attribute_PlayerState.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_mds/Dash_And_Gliding.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +95,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Plugins/Experimental/MoverExamples/Source/MoverExamples/Private/MoverExamplesCharacter.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/String/FormatStringSan.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/CoreUObject/Public/Templates/Casts.h" root0="FORCE_HIGHLIGHTING" />
@@ -42,12 +109,14 @@
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_GameState.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerState.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponData.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerController.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerState.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -205,6 +274,7 @@
       <workItem from="1769646704862" duration="2818000" />
       <workItem from="1769652414296" duration="9220000" />
       <workItem from="1769669425524" duration="2538000" />
+      <workItem from="1769730832374" duration="16459000" />
     </task>
     <servers />
   </component>
