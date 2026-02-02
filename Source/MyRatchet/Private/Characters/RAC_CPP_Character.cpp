@@ -9,6 +9,9 @@
 #include "Frameworks/RAC_PlayerState.h"
 #include "InputActionValue.h"
 #include "Styling/StarshipCoreStyle.h"
+#include "AbilitySystemComponent.h"
+#include "GameplayTagContainer.h"
+#include "Characters/RAC_AttributeSet.h"
 
 // Sets default values
 ARAC_CPP_Character::ARAC_CPP_Character()
@@ -342,29 +345,70 @@ void ARAC_CPP_Character::Shoot(const FInputActionValue& Value)
 			GetCharacterMovement()->bOrientRotationToMovement = !IsAiming;
 		}
 	}
-	// 사격을 로컬에서 직접 처리합니다 (싱글 플레이)
+
 	HandleShoot(IsFireHold);
 }
 
 void ARAC_CPP_Character::HandleShoot(bool bPressed)
 {
-	if (!bPressed) return; // only handle on press (single-shot)
-
-	ARAC_PlayerState* PS = GetPlayerState<ARAC_PlayerState>();
-	if (!PS || !PS->AttributeSet) return;
-
-	float CurrentAmmo = PS->AttributeSet->GetAmmo();
-	if (CurrentAmmo <= 0.f)
+	UAbilitySystemComponent* ASC = GetAbilitySystemComponent();
+	if (!ASC)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No ammo to shoot"));
 		return;
 	}
 
-	float NewAmmo = FMath::Max(0.0f, CurrentAmmo - 1.0f);
-	PS->AttributeSet->SetAmmo(NewAmmo);
+	const URAC_AttributeSet* Attributes = Cast<URAC_AttributeSet>(
+		ASC->GetAttributeSet(URAC_AttributeSet::StaticClass())
+		);
 
-	UE_LOG(LogTemp, Log, TEXT("Fired weapon. Ammo: %.0f -> %.0f"), CurrentAmmo, NewAmmo);
-	// TODO: spawn projectile or perform hit trace here
+	const FGameplayTag AutoTag = FGameplayTag::RequestGameplayTag(FName("Weapon.FireMode.Auto"));
+	const FGameplayTag SingleTag = FGameplayTag::RequestGameplayTag(FName("Weapon.FireMode.Single"));
+	const FGameplayTag ChargeTag = FGameplayTag::RequestGameplayTag(FName("Weapon.FireMode.Charge"));
+
+	FGameplayTagContainer AutoTags;
+	AutoTags.AddTag(AutoTag);
+	FGameplayTagContainer SingleTags;
+	SingleTags.AddTag(SingleTag);
+	FGameplayTagContainer ChargeTags;
+	ChargeTags.AddTag(ChargeTag);
+
+	FGameplayTagContainer AllFireTags;
+	AllFireTags.AddTag(AutoTag);
+	AllFireTags.AddTag(SingleTag);
+	AllFireTags.AddTag(ChargeTag);
+
+	if (bPressed)
+	{
+		if (Attributes && Attributes->GetAmmo() <= 0.0f)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("No Ammo"));
+			return;
+		}
+
+		bool bActivated = false;
+		if (ASC->TryActivateAbilitiesByTag(ChargeTags))
+		{
+			bActivated = true;
+		}
+		else if (ASC->TryActivateAbilitiesByTag(AutoTags))
+		{
+			bActivated = true;
+		}
+		else if (ASC->TryActivateAbilitiesByTag(SingleTags))
+		{
+			bActivated = true;
+		}
+
+		if (bActivated)
+		{
+			ASC->ApplyModToAttribute(URAC_AttributeSet::GetAmmoAttribute(), EGameplayModOp::Additive, -1.0f);
+			UE_LOG(LogTemp, Warning, TEXT("Shooting Ability Activated!"));
+		}
+	}
+	else
+	{
+		ASC->CancelAbilities(&AllFireTags);
+	}
 }
 
 void ARAC_CPP_Character::Dash(const FInputActionValue& Value)

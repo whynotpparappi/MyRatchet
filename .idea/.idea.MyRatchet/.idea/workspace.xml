@@ -14,10 +14,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Bullet.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blast.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Test/Blast.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Bomb.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Test/Bomb.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GA_Fire.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Ammo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Ammo.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +218,7 @@
       <workItem from="1769652414296" duration="9220000" />
       <workItem from="1769669425524" duration="2538000" />
       <workItem from="1769730832374" duration="18375000" />
-      <workItem from="1769991951240" duration="19599000" />
+      <workItem from="1769991951240" duration="27053000" />
     </task>
     <servers />
   </component>
