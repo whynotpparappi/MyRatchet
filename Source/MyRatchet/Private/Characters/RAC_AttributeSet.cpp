@@ -17,7 +17,7 @@ URAC_AttributeSet::URAC_AttributeSet()
 	InitRaritanium(0);
 	// 3.
 	
-	InitAmmo(0);
+	InitAmmo(100);
 	InitMaxAmmo(150);
 	
 	InitDashCooldown(0.0f);

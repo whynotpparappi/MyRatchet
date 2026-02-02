@@ -364,7 +364,6 @@ void ARAC_CPP_Character::HandleShoot(bool bPressed)
 	PS->AttributeSet->SetAmmo(NewAmmo);
 
 	UE_LOG(LogTemp, Log, TEXT("Fired weapon. Ammo: %.0f -> %.0f"), CurrentAmmo, NewAmmo);
-
 	// TODO: spawn projectile or perform hit trace here
 }
 

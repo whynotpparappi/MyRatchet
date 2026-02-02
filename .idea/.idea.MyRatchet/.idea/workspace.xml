@@ -12,7 +12,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="" />
+    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Bullet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Plugins/Experimental/MoverExamples/Source/MoverExamples/Private/MoverExamplesCharacter.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/String/FormatStringSan.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/CoreUObject/Public/Templates/Casts.h" root0="FORCE_HIGHLIGHTING" />
@@ -40,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerState.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponData.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
@@ -47,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerController.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponManager.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -57,6 +66,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="38bHLYxSLzxd0vp9r677RGVPWGG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -204,7 +216,8 @@
       <workItem from="1769646704862" duration="2818000" />
       <workItem from="1769652414296" duration="9220000" />
       <workItem from="1769669425524" duration="2538000" />
-      <workItem from="1769730832374" duration="17274000" />
+      <workItem from="1769730832374" duration="18375000" />
+      <workItem from="1769991951240" duration="19599000" />
     </task>
     <servers />
   </component>
