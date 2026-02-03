@@ -12,6 +12,8 @@
 #include "AbilitySystemComponent.h"
 #include "GameplayTagContainer.h"
 #include "Characters/RAC_AttributeSet.h"
+#include "Weapons/RAC_WeaponManager.h"
+#include "Weapons/RAC_WeaponData.h"
 
 // Sets default values
 ARAC_CPP_Character::ARAC_CPP_Character()
@@ -50,6 +52,9 @@ ARAC_CPP_Character::ARAC_CPP_Character()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false; //컨트롤러에 따라 카메라 붐을 회전시킨다.
 
+	// 무기 매니저
+	WeaponManager = CreateDefaultSubobject<URAC_WeaponManager>(TEXT("WeaponManager"));
+
 }
 
 // Called when the game starts or when spawned
@@ -67,6 +72,7 @@ void ARAC_CPP_Character::BeginPlay()
 	}
 	
 	DefaultGravityScale = GetCharacterMovement()->GravityScale;
+	TryInitializeWeapon();
 }
 
 class UAbilitySystemComponent* ARAC_CPP_Character::GetAbilitySystemComponent() const
@@ -136,6 +142,11 @@ void ARAC_CPP_Character::PossessedBy(AController* NewController)
 	if (PS)
 	{
 		PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS,this);
+		TryInitializeWeapon();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("GAS: Failed to find PlayerState in PossessedBy! Check your PlayerState class."));
 	}
 }
 
@@ -147,7 +158,37 @@ void ARAC_CPP_Character::OnRep_PlayerState()
 	if (PS)
 	{
 		PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS,this);
+		TryInitializeWeapon();
 	}
+}
+
+void ARAC_CPP_Character::TryInitializeWeapon()
+{
+	if (bWeaponInitialized)
+	{
+		return;
+	}
+
+	if (!WeaponManager || WeaponInventory.Num() == 0)
+	{
+		return;
+	}
+
+	if (!GetAbilitySystemComponent())
+	{
+		return;
+	}
+
+	const int32 InitialIndex = (CurrentWeaponIndex >= 0) ? CurrentWeaponIndex : 0;
+	URAC_WeaponData* InitialWeapon = WeaponInventory.IsValidIndex(InitialIndex) ? WeaponInventory[InitialIndex] : nullptr;
+	if (!InitialWeapon)
+	{
+		return;
+	}
+
+	WeaponManager->SwapWeapon(InitialWeapon);
+	CurrentWeaponIndex = InitialIndex;
+	bWeaponInitialized = true;
 }
 
 void ARAC_CPP_Character::StartDash()
@@ -357,6 +398,7 @@ void ARAC_CPP_Character::HandleShoot(bool bPressed)
 		return;
 	}
 
+	UE_LOG(LogTemp, Warning, TEXT("HandleShoot bPressed=%d"), bPressed);
 	const URAC_AttributeSet* Attributes = Cast<URAC_AttributeSet>(
 		ASC->GetAttributeSet(URAC_AttributeSet::StaticClass())
 		);
@@ -385,24 +427,35 @@ void ARAC_CPP_Character::HandleShoot(bool bPressed)
 			return;
 		}
 
-		bool bActivated = false;
-		if (ASC->TryActivateAbilitiesByTag(ChargeTags))
+		bool bChargeActivated = false;
+		bool bAutoActivated = false;
+		bool bSingleActivated = false;
+
+		bChargeActivated = ASC->TryActivateAbilitiesByTag(ChargeTags);
+		if (!bChargeActivated)
 		{
-			bActivated = true;
+			bAutoActivated = ASC->TryActivateAbilitiesByTag(AutoTags);
 		}
-		else if (ASC->TryActivateAbilitiesByTag(AutoTags))
+		if (!bChargeActivated && !bAutoActivated)
 		{
-			bActivated = true;
-		}
-		else if (ASC->TryActivateAbilitiesByTag(SingleTags))
-		{
-			bActivated = true;
+			bSingleActivated = ASC->TryActivateAbilitiesByTag(SingleTags);
 		}
 
-		if (bActivated)
+		const bool bAnyActivated = bChargeActivated || bAutoActivated || bSingleActivated;
+		if (bAnyActivated)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Shooting Ability Activated!"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("No Shooting Ability could be Activated."));
+			return;
+		}
+
+		// 좌클릭 시 탄약 감소: Auto는 GA에서 소모하므로 여기서는 제외
+		if (!bAutoActivated)
 		{
 			ASC->ApplyModToAttribute(URAC_AttributeSet::GetAmmoAttribute(), EGameplayModOp::Additive, -1.0f);
-			UE_LOG(LogTemp, Warning, TEXT("Shooting Ability Activated!"));
 		}
 	}
 	else
@@ -457,6 +510,32 @@ void ARAC_CPP_Character::TryStartGlideFromHold()
 	if (!bJumpHeld) return;
 
 	bGlideRequested = true;
+}
+
+void ARAC_CPP_Character::Tab(const FInputActionValue& Value)
+{
+	IsTabHold = Value.Get<bool>();
+	UE_LOG(LogTemp, Warning, TEXT("Tab input received"));
+	if (!IsTabHold)
+	{
+		return;
+	}
+
+	if (!WeaponManager || WeaponInventory.Num() == 0)
+	{
+		return;
+	}
+
+	const int32 NextIndex = (CurrentWeaponIndex + 1) % WeaponInventory.Num();
+	URAC_WeaponData* NextWeapon = WeaponInventory.IsValidIndex(NextIndex) ? WeaponInventory[NextIndex] : nullptr;
+	if (!NextWeapon)
+	{
+		return;
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Weapon Switching"));
+	WeaponManager->SwapWeapon(NextWeapon);
+	CurrentWeaponIndex = NextIndex;
 }
 
 

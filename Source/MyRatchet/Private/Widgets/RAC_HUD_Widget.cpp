@@ -29,6 +29,7 @@ void URAC_HUD_Widget::NativeDestruct()
 	{
 		OwningPlayerState->AttributeSet->OnHealthChanged.RemoveDynamic(this, &URAC_HUD_Widget::OnHealthChanged);
 		OwningPlayerState->AttributeSet->OnBoltsChanged.RemoveDynamic(this, &URAC_HUD_Widget::OnBoltsChanged);
+		OwningPlayerState->AttributeSet->OnAmmoChanged.RemoveDynamic(this, &URAC_HUD_Widget::OnAmmoChanged);
 	}
 
 	Super::NativeDestruct();
@@ -46,6 +47,7 @@ void URAC_HUD_Widget::BindToAttributeSet()
 	// 델리게이트 바인드
 	AttributeSet->OnHealthChanged.AddDynamic(this, &URAC_HUD_Widget::OnHealthChanged);
 	AttributeSet->OnBoltsChanged.AddDynamic(this, &URAC_HUD_Widget::OnBoltsChanged);
+	AttributeSet->OnAmmoChanged.AddDynamic(this, &URAC_HUD_Widget::OnAmmoChanged);
 
 	// 초기 UI 업데이트
 	UpdateHealthUI(AttributeSet->GetHealth(), AttributeSet->GetMaxHealth());

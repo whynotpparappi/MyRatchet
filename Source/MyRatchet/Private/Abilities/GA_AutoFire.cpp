@@ -7,6 +7,10 @@
 #include "GameplayTagContainer.h"
 #include "TimerManager.h"
 #include "Effects/GE_AmmoCost.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Engine/World.h"
+
 
 UGA_AutoFire::UGA_AutoFire()
 {
@@ -96,8 +100,127 @@ void UGA_AutoFire::FireOnce()
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 		return;
 	}
-
 	// TODO: 실제 발사(프로젝타일/라인트레이스) 로직 연결
+	
+	UWorld* World = GetWorld();
+	AActor* Avatar = GetAvatarActorFromActorInfo();
+	APlayerController* PC = CurrentActorInfo ? CurrentActorInfo->PlayerController.Get() : nullptr;
+	
+	if (!World || !Avatar || !PC || !ProjectileClass)
+		return;
+	
+	// 1) 화면 중앙 목표점
+	FVector TargetPoint;
+	const float AimTraceDistance = 50000.f;
+	if (!GetAimTargetPoint(PC, Avatar, AimTraceDistance, TargetPoint))
+		return;
+
+	// 2) 총구 트랜스폼 (너 구조에 맞게 “무기 메쉬의 소켓”에서 가져오면 됨)
+	FTransform MuzzleTM;
+	if (USkeletalMeshComponent* MeshComp = Avatar->FindComponentByClass<USkeletalMeshComponent>())
+	{
+		if (MeshComp->DoesSocketExist(MuzzleSocketName))
+		{
+			MuzzleTM = MeshComp->GetSocketTransform(MuzzleSocketName, RTS_World);
+		}
+		else
+		{
+			MuzzleTM = Avatar->GetActorTransform();
+		}
+	}
+	else
+	{
+		MuzzleTM = Avatar->GetActorTransform();
+	}
+
+	const FVector MuzzleLoc = MuzzleTM.GetLocation();
+
+	// 3) 총구에서 목표점을 향한 방향으로 회전
+	FVector ShootDir = (TargetPoint - MuzzleLoc).GetSafeNormal();
+	FRotator SpawnRot = ShootDir.Rotation();
+
+	// (옵션) 너무 가까운 벽에 총구가 박혀있을 때 보정하고 싶으면
+	// MuzzleLoc를 약간 뒤로/앞으로 밀거나, 두 번째 트레이스로 SpawnLoc 조정
+
+	FActorSpawnParameters Params;
+	Params.Owner = Avatar;
+	Params.Instigator = Cast<APawn>(Avatar);
+	Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+
+	AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, MuzzleLoc, SpawnRot, Params);
+	if (!Projectile)
+		return;
+
+	if (UProjectileMovementComponent* PMC = Projectile->FindComponentByClass<UProjectileMovementComponent>())
+	{
+		PMC->Velocity = ShootDir * ProjectileSpeed;
+		PMC->Activate(true);
+	}
+}
+
+bool UGA_AutoFire::GetCrosshairRay(APlayerController* PC, FVector& OutStart, FVector& OutDir) const
+{
+	if (!PC)
+	{
+		return false;
+	}
+
+	int32 SizeX = 0;
+	int32 SizeY = 0;
+	PC->GetViewportSize(SizeX, SizeY);
+	if (SizeX <= 0 || SizeY <= 0)
+	{
+		return false;
+	}
+
+	const float ScreenX = SizeX * 0.5f;
+	const float ScreenY = SizeY * 0.5f;
+
+	FVector WorldLoc;
+	FVector WorldDir;
+	if (!PC->DeprojectScreenPositionToWorld(ScreenX, ScreenY, WorldLoc, WorldDir))
+	{
+		return false;
+	}
+
+	OutStart = WorldLoc;
+	OutDir = WorldDir.GetSafeNormal();
+	return true;
+}
+
+bool UGA_AutoFire::GetAimTargetPoint(APlayerController* PC, AActor* IgnoreActor, float TraceDistance, FVector& OutTargetPoint) const
+{
+	if (!PC || !PC->GetWorld())
+	{
+		return false;
+	}
+
+	FVector Start;
+	FVector Dir;
+	if (!GetCrosshairRay(PC, Start, Dir))
+	{
+		return false;
+	}
+
+	const FVector End = Start + Dir * TraceDistance;
+
+	FHitResult Hit;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(AimTrace), true, IgnoreActor);
+	if (IgnoreActor)
+	{
+		Params.AddIgnoredActor(IgnoreActor);
+	}
+
+	const bool bHit = PC->GetWorld()->LineTraceSingleByChannel(
+		Hit,
+		Start,
+		End,
+		ECC_Visibility,
+		Params
+	);
+
+	OutTargetPoint = bHit ? Hit.ImpactPoint : End;
+	return true;
 }
 
 bool UGA_AutoFire::ApplyAmmoCost()

@@ -62,6 +62,11 @@ void ARAC_PlayerController::SetupInputComponent()
 	
 		//Melee
 		EnhancedInputComponent->BindAction(MeleeAction,ETriggerEvent::Started, this, &ARAC_PlayerController::OnMelee);
+	
+		//Tab
+		EnhancedInputComponent->BindAction(TabAction,ETriggerEvent::Triggered, this, &ARAC_PlayerController::OnTab);
+		EnhancedInputComponent->BindAction(TabAction, ETriggerEvent::Completed, this, &ARAC_PlayerController::OnTab);
+		
 	}
 	else
 	{
@@ -115,6 +120,58 @@ void ARAC_PlayerController::OnMelee(const FInputActionValue& Value)
 {
 	if (ARAC_CPP_Character* C = Cast<ARAC_CPP_Character>(GetPawn()))
 		C->Melee(Value);
+}
+
+void ARAC_PlayerController::OnTab(const FInputActionValue& Value)
+{
+	if (ARAC_CPP_Character* C = Cast<ARAC_CPP_Character>(GetPawn()))
+	{
+		C->Tab(Value);
+	}
+}
+
+bool ARAC_PlayerController::GetCrosshairRay(APlayerController* PC, FVector& OutStart, FVector& OutDir)
+{
+	if (!PC) return false;
+	
+	int32 SizeX, SizeY;
+	PC->GetViewportSize(SizeX, SizeY);
+	
+	FVector WorldLoc, WorldDir;
+	const float ScreenX = SizeX * 0.5f;
+	const float ScreenY = SizeY * 0.5f;
+	
+	if (PC->DeprojectScreenPositionToWorld(ScreenX, ScreenY, WorldLoc, WorldDir))
+		return false;
+	
+	OutStart = WorldLoc;
+	OutDir = WorldDir.GetSafeNormal();
+	return true;
+	
+}
+
+bool ARAC_PlayerController::GetAimTargetPoint(
+	APlayerController* PC,
+	AActor* IgnoreActor,
+	float TraceDistance,
+	FVector& OutTargetPoint)
+{
+	FVector Start, Dir;
+	if (!GetCrosshairRay(PC, Start, Dir))
+		return false;
+	
+	FVector End = Start + Dir * TraceDistance;
+	
+	FHitResult Hit;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(AimTrace), true, IgnoreActor);
+	Params.AddIgnoredActor(IgnoreActor);
+	
+	bool bHit = PC->GetWorld()->LineTraceSingleByChannel(
+		Hit,Start,End,ECC_Visibility, Params
+		);
+	
+	OutTargetPoint = bHit ? Hit.ImpactPoint : End;
+	return true;
 }
 
 

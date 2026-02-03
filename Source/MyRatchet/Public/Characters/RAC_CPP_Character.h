@@ -10,6 +10,8 @@
 struct FInputActionValue;
 class USpringArmComponent;
 class UCameraComponent;
+class URAC_WeaponManager;
+class URAC_WeaponData;
 
 UCLASS()
 
@@ -76,6 +78,19 @@ private:
 	
 	FTimerHandle DashCooldownHandle;
 	//FTimerHandle AfterImageTimerHandle;
+
+	// <<< Weapon >>>
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Weapon", meta=(AllowPrivateAccess = "true"))
+	URAC_WeaponManager* WeaponManager;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Weapon", meta=(AllowPrivateAccess = "true"))
+	TArray<URAC_WeaponData*> WeaponInventory;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Weapon", meta=(AllowPrivateAccess = "true"))
+	int32 CurrentWeaponIndex = -1;
+
+	bool bWeaponInitialized = false;
+	void TryInitializeWeapon();
 	
 	void StartDash();
 	void TickDash(float DeltaTime);
@@ -127,6 +142,9 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
 	bool IsFireHold = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
+	bool IsTabHold = false;
 	
 public:
 	void Move(const FInputActionValue& Value);
@@ -141,6 +159,7 @@ public:
 	void Dash(const FInputActionValue& Value);
 	void Melee(const FInputActionValue& Value);
 	void TryStartGlideFromHold();
+	void Tab(const FInputActionValue& Value);
 	
 	virtual void OnConstruction(const FTransform& Transform) override;
 	

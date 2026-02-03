@@ -25,6 +25,16 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Fire")
 	bool bFireImmediately = true;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
+	TSubclassOf<AActor> ProjectileClass;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
+	float ProjectileSpeed = 3000.f;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
+	FName MuzzleSocketName = "Muzzle_01";
+	
 
 	virtual void ActivateAbility(
 		const FGameplayAbilitySpecHandle Handle,
@@ -48,4 +58,8 @@ private:
 	void StopFiring();
 	void FireOnce();
 	bool ApplyAmmoCost();
+	bool GetCrosshairRay(APlayerController* PC, FVector& OutStart, FVector& OutDir) const;
+	bool GetAimTargetPoint(APlayerController* PC, AActor* IgnoreActor, float TraceDistance, FVector& OutTargetPoint) const;
+	
+	
 };

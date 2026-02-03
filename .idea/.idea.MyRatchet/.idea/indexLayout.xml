@@ -2,7 +2,11 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders />
-    <explicitIncludes />
+    <explicitIncludes>
+      <Path>Source/MyRatchet/Private/Effects</Path>
+      <Path>Source/MyRatchet/Public/Abilities</Path>
+      <Path>Source/MyRatchet/Public/Effects</Path>
+    </explicitIncludes>
     <explicitExcludes />
   </component>
 </project>

@@ -21,7 +21,6 @@ class MYRATCHET_API ARAC_PlayerController : public APlayerController
 	
 public:
 	virtual void BeginPlay() override;
-	void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent);
 
 	virtual void SetupInputComponent() override;
 protected:
@@ -42,6 +41,8 @@ protected:
 	UInputAction* ShootAction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
 	UInputAction* MeleeAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input", meta= (AllowPrivateAccess = "true"))
+	UInputAction* TabAction;
 
 	// HUD Widget 클래스 (블루프린트에서 설정)
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="UI", meta= (AllowPrivateAccess = "true"))
@@ -60,4 +61,8 @@ private:
 	void OnShoot(const FInputActionValue& Value);
 	void OnDash(const FInputActionValue& Value);
 	void OnMelee(const FInputActionValue& Value);
+	void OnTab(const FInputActionValue& Value);
+	
+	bool GetCrosshairRay(APlayerController* PC, FVector& OutStart, FVector& OutDir);
+	bool GetAimTargetPoint(APlayerController* PC, AActor* IgnoreActor, float TraceDistance, FVector& OutTargetPoint);
 };

@@ -13,12 +13,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Anim/ABP_RAC_Wraith_AnimBlueprint1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Anim/ABP_RAC_Wraith_AnimBlueprint1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Framworks/Bp_RAC_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Framworks/Bp_RAC_PlayerController.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Input/Move_Mapping.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Input/Move_Mapping.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Blast.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Test/Blast.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/Bomb.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Test/Bomb.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GA_Fire.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Ammo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Ammo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GA_AutoFire.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Test/GE_Ammo.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Abilities/GA_AutoFire.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Abilities/GA_AutoFire.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_CPP_Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Widgets/RAC_HUD_Widget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Widgets/RAC_HUD_Widget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Abilities/GA_AutoFire.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Abilities/GA_AutoFire.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_CPP_Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_PlayerController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +44,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Plugins/Experimental/MoverExamples/Source/MoverExamples/Private/MoverExamplesCharacter.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/String/FormatStringSan.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/CoreUObject/Public/Templates/Casts.h" root0="FORCE_HIGHLIGHTING" />
@@ -42,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Public/CharacterMovementComponentAsync.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/GameplayTags/Classes/BlueprintGameplayTagLibrary.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Effects/GE_AmmoCost.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_GameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_GameModeBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_GameState.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -49,7 +61,9 @@
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Frameworks/RAC_PlayerState.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponData.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponManager.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Abilities/GA_AutoFire.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Effects/GE_AmmoCost.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Frameworks/RAC_GameState.h" root0="FORCE_HIGHLIGHTING" />
@@ -89,7 +103,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;google.protobuf.language&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -219,6 +233,10 @@
       <workItem from="1769669425524" duration="2538000" />
       <workItem from="1769730832374" duration="18375000" />
       <workItem from="1769991951240" duration="27053000" />
+      <workItem from="1770076877308" duration="7854000" />
+      <workItem from="1770093657624" duration="1612000" />
+      <workItem from="1770095605653" duration="537000" />
+      <workItem from="1770096206532" duration="10739000" />
     </task>
     <servers />
   </component>
@@ -247,5 +265,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
