@@ -3,3 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+namespace RatchetCollisionChannels
+{
+	constexpr ECollisionChannel FireChannel = ECC_GameTraceChannel1;
+}

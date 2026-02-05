@@ -10,6 +10,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/World.h"
+#include "DrawDebugHelpers.h"
 
 
 UGA_AutoFire::UGA_AutoFire()
@@ -115,6 +116,16 @@ void UGA_AutoFire::FireOnce()
 	if (!GetAimTargetPoint(PC, Avatar, AimTraceDistance, TargetPoint))
 		return;
 
+	// (디버그) 조준 라인트레이스 시각화
+	FVector AimStart;
+	FVector AimDir;
+	if (GetCrosshairRay(PC, AimStart, AimDir))
+	{
+		const FVector AimEnd = AimStart + AimDir * AimTraceDistance;
+		DrawDebugLine(World, AimStart, TargetPoint, FColor::Green, false, 0.05f, 0, 1.0f);
+		DrawDebugPoint(World, TargetPoint, 6.0f, FColor::Red, false, 0.05f);
+	}
+
 	// 2) 총구 트랜스폼 (너 구조에 맞게 “무기 메쉬의 소켓”에서 가져오면 됨)
 	FTransform MuzzleTM;
 	if (USkeletalMeshComponent* MeshComp = Avatar->FindComponentByClass<USkeletalMeshComponent>())
@@ -215,7 +226,7 @@ bool UGA_AutoFire::GetAimTargetPoint(APlayerController* PC, AActor* IgnoreActor,
 		Hit,
 		Start,
 		End,
-		ECC_Visibility,
+		AimTraceChannel,
 		Params
 	);
 

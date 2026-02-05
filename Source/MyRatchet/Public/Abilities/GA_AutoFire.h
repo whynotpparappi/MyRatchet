@@ -4,9 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
+#include "MyRatchet/MyRatchet.h"
 #include "GA_AutoFire.generated.h"
 
 class UGameplayEffect;
+
+
 
 UCLASS()
 class MYRATCHET_API UGA_AutoFire : public UGameplayAbility
@@ -17,9 +20,9 @@ public:
 	UGA_AutoFire();
 
 protected:
-	UPROPERTY(EditDefaultsOnly, Category = "Fire")
+	UPROPERTY( EditDefaultsOnly, Category = "Fire")
 	float FireInterval = 0.1f;
-
+ 
 	UPROPERTY(EditDefaultsOnly, Category = "Fire")
 	TSubclassOf<UGameplayEffect> AmmoCostEffect;
 
@@ -34,6 +37,9 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 	FName MuzzleSocketName = "Muzzle_01";
+
+	UPROPERTY(EditDefaultsOnly, Category = "Trace")
+	TEnumAsByte<ECollisionChannel> AimTraceChannel = RatchetCollisionChannels::FireChannel;
 	
 
 	virtual void ActivateAbility(
