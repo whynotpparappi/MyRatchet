@@ -4,6 +4,11 @@
 Enemy AI의 Behavior Tree/Blackboard 에셋을 업데이트한 커밋. BTTask 추가에 맞춰 Blackboard 스키마와 BT 흐름을 조정한 변경으로 보이며, 변경 대상은 에디터용 바이너리 에셋(blueprint uasset)이다.
 
 ## 주요 변경 사항 (상세)
+- **BTTask 추가 (GAS 연동)**: [Source/MyRatchet/Public/Characters/Enemy/BTTask_ActiveAbility.h](Source/MyRatchet/Public/Characters/Enemy/BTTask_ActiveAbility.h) / [Source/MyRatchet/Private/Characters/Enemy/BTTask_ActiveAbility.cpp](Source/MyRatchet/Private/Characters/Enemy/BTTask_ActiveAbility.cpp)
+  - 행동 트리에서 특정 어빌리티 태그를 기반으로 능력을 활성화하는 BTTask.
+  - `AbilityTag`로 어떤 공격/스킬을 실행할지 에디터에서 선택 가능.
+  - `ExecuteTask()`에서 `IAbilitySystemInterface`와 `UAbilitySystemComponent`를 통해 능력 실행을 시도.
+
 - **Blackboard 업데이트**: [Content/_M_RAC/Character/Enemy/BB_Enemy.uasset](Content/_M_RAC/Character/Enemy/BB_Enemy.uasset)
   - Enemy AI가 사용하는 블랙보드 키 스키마를 갱신.
   - BTTask/Decorator/Service가 참조하는 상태 데이터를 통합 관리.
@@ -21,6 +26,17 @@ Enemy AI의 Behavior Tree/Blackboard 에셋을 업데이트한 커밋. BTTask �
   - 참고: uasset 내부 노드 구성(정확한 Task/Decorator/Service 목록)은 에디터에서 확인 필요.
 
 ## 파일/함수(역할) 정리
+- **BTTask_ActiveAbility.h**
+  - `UBTTask_ActiveAbility`: GAS 능력 실행을 위한 BTTask 클래스 선언.
+  - `AbilityTag`: 실행할 능력 태그를 지정하는 에디터 노출 프로퍼티.
+
+- **BTTask_ActiveAbility.cpp**
+  - `UBTTask_ActiveAbility()`: 에디터에서 보이는 노드 이름을 `Activate Ability`로 지정.
+  - `ExecuteTask()`:
+    - AI 컨트롤러/폰을 획득.
+    - `IAbilitySystemInterface`로 ASC 접근.
+    - `TryActivateAbilitiesByTag()`로 지정 태그 능력을 실행하고 성공/실패 반환.
+
 - **BB_Enemy.uasset**
   - 함수 대신 블랙보드 키 정의가 핵심.
   - BTTask와 조건 노드가 참조하는 공통 상태 저장소 역할.
