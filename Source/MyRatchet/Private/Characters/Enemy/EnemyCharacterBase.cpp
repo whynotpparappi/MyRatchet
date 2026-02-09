@@ -5,6 +5,8 @@
 #include "Characters/Enemy/EnemyAbilitySystemComponentBase.h"
 #include "Characters/Enemy/EnemyAIController.h"
 #include "AbilitySystemComponent.h"
+#include "GameplayAbilitySpec.h"
+#include "Abilities/GameplayAbility.h"
 
 // Sets default values
 AEnemyCharacterBase::AEnemyCharacterBase()
@@ -43,6 +45,20 @@ void AEnemyCharacterBase::InitializeAbilitySystem()
 	if (AbilitySystemComponent)
 	{
 		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+		if (!bAbilitiesGranted && HasAuthority())
+		{
+			for (const TSubclassOf<UGameplayAbility>& AbilityClass : DefaultAbilities)
+			{
+				if (*AbilityClass)
+				{
+					FGameplayAbilitySpec Spec(AbilityClass, 1);
+					AbilitySystemComponent->GiveAbility(Spec);
+				}
+			}
+
+			bAbilitiesGranted = true;
+		}
 	}
 }
 

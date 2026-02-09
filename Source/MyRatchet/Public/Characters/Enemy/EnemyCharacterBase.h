@@ -5,18 +5,14 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
+#include "Characters/Enemy/YourProjectTypes.h"
+
 #include "EnemyCharacterBase.generated.h"
 
 class UEnemyAbilitySystemComponentBase;
 class AEnemyAIController;
+class UGameplayAbility;
 
-UENUM(BlueprintType)
-enum class EEnemyType : uint8
-{
-	Melee UMETA(DisplayName = "Melee"),
-	Ranged UMETA(DisplayName = "Ranged"),
-	Boss UMETA(DisplayName = "Boss")
-};
 
 UCLASS()
 class MYRATCHET_API AEnemyCharacterBase : public ACharacter, public IAbilitySystemInterface
@@ -45,6 +41,12 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
 	UEnemyAbilitySystemComponentBase* AbilitySystemComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "GAS")
+	TArray<TSubclassOf<UGameplayAbility>> DefaultAbilities;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "GAS")
+	bool bAbilitiesGranted = false;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enemy")
 	EEnemyType EnemyType = EEnemyType::Melee;
