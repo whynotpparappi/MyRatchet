@@ -14,19 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ArrowTrail/Demo/BP_Demo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ArrowTrail/Demo/BP_Demo.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MPMECH/BP/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MPMECH/BP/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BB_Enemy.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BB_Enemy_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BB_Enemy_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BT_Enemy.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BT_Enemy_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BT_Enemy_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/1/A0/YWGH4SSB5DS85C86APHW9J.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/1/A0/YWGH4SSB5DS85C86APHW9J.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/MyRatchet.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/MyRatchet.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/EnemyAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/EnemyAIController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/BTTask_ActiveAbility.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/BTTask_ActiveAbility.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyAIController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyCharacterBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +254,7 @@
       <workItem from="1770272980898" duration="2744000" />
       <workItem from="1770277220449" duration="4878000" />
       <workItem from="1770369023615" duration="602000" />
-      <workItem from="1770593346859" duration="13833000" />
+      <workItem from="1770593346859" duration="14630000" />
     </task>
     <servers />
   </component>
