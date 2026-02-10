@@ -12,7 +12,7 @@
 // 블랙보드 키 이름 정의
 const FName AEnemyAIController::TargetActorKey(TEXT("TargetActor"));
 const FName AEnemyAIController::HomeLocationKey(TEXT("HomeLocation"));
-const FName AEnemyAIController::HasLineOfSightKey(TEXT("bHasLineOfSight"));
+const FName AEnemyAIController::HasLineOfSightKey(TEXT("HasLineOfSight"));
 const FName AEnemyAIController::AttackRangeKey(TEXT("AttackRange"));
 
 AEnemyAIController::AEnemyAIController()
@@ -24,9 +24,9 @@ AEnemyAIController::AEnemyAIController()
 
 	// 2. 시야(Sight) 설정
 	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SightConfig"));
-	SightConfig->SightRadius = SightRadius;							// 감지 거리
-	SightConfig->LoseSightRadius = LoseSightRadius;						// 감지 해제 거리
-	SightConfig->PeripheralVisionAngleDegrees = PeripheralVisionAngleDegrees;			// 시야각
+	SightConfig->SightRadius = SightRadius;                              // 감지 거리
+	SightConfig->LoseSightRadius = LoseSightRadius;                      // 감지 해제 거리
+	SightConfig->PeripheralVisionAngleDegrees = PeripheralVisionAngleDegrees; // 시야각
 	SightConfig->DetectionByAffiliation.bDetectEnemies = bDetectEnemies;
 	SightConfig->DetectionByAffiliation.bDetectFriendlies = bDetectFriendlies;
 	SightConfig->DetectionByAffiliation.bDetectNeutrals = bDetectNeutrals;
@@ -73,14 +73,13 @@ void AEnemyAIController::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 
 		if (Stimulus.WasSuccessfullySensed())
 		{
-			// 플레이어 감지
+			// 플레이어 감지: 타겟 설정 + 시야 플래그 true
 			BlackboardComponent->SetValueAsObject(TargetActorKey, Actor);
 			BlackboardComponent->SetValueAsBool(HasLineOfSightKey, true);
 		}
 		else
 		{
-			// 플레이어 시야 상실
-			BlackboardComponent->SetValueAsObject(TargetActorKey, nullptr);
+			// 시야 상실: 타겟은 유지하고 시야 플래그만 false
 			BlackboardComponent->SetValueAsBool(HasLineOfSightKey, false);
 		}
 	}
