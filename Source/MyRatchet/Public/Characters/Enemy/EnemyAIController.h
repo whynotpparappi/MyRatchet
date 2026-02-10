@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -64,7 +64,10 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "AI")
 	UBehaviorTree* BTAsset = nullptr;
 
+	// 블랙보드 키 이름들
 	static const FName TargetActorKey;
 	static const FName HomeLocationKey;
 	static const FName HasLineOfSightKey;
+	// 공격 사거리 키
+	static const FName AttackRangeKey;
 };

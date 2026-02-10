@@ -1,7 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Characters/Enemy/EnemyAIController.h"
+#include "Characters/Enemy/EnemyCharacterBase.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "BehaviorTree/BlackboardData.h"
@@ -12,19 +13,20 @@
 const FName AEnemyAIController::TargetActorKey(TEXT("TargetActor"));
 const FName AEnemyAIController::HomeLocationKey(TEXT("HomeLocation"));
 const FName AEnemyAIController::HasLineOfSightKey(TEXT("bHasLineOfSight"));
+const FName AEnemyAIController::AttackRangeKey(TEXT("AttackRange"));
 
 AEnemyAIController::AEnemyAIController()
 {
 	// 1. Perception 컴포넌트 생성
 	AIPerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComponent"));
-	// 1-1. 블랙보드 컴포넌트 생성
+	// 1-1. Blackboard 컴포넌트 생성
 	BlackboardComponent = CreateDefaultSubobject<UBlackboardComponent>(TEXT("BlackboardComponent"));
 
 	// 2. 시야(Sight) 설정
 	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SightConfig"));
-	SightConfig->SightRadius = SightRadius;							// 인지 사거리
-	SightConfig->LoseSightRadius = LoseSightRadius;						// 인지 해제 사거리
-	SightConfig->PeripheralVisionAngleDegrees = PeripheralVisionAngleDegrees;			// 시야각 (반각이므로 실제 120도)
+	SightConfig->SightRadius = SightRadius;							// 감지 거리
+	SightConfig->LoseSightRadius = LoseSightRadius;						// 감지 해제 거리
+	SightConfig->PeripheralVisionAngleDegrees = PeripheralVisionAngleDegrees;			// 시야각
 	SightConfig->DetectionByAffiliation.bDetectEnemies = bDetectEnemies;
 	SightConfig->DetectionByAffiliation.bDetectFriendlies = bDetectFriendlies;
 	SightConfig->DetectionByAffiliation.bDetectNeutrals = bDetectNeutrals;
@@ -32,7 +34,7 @@ AEnemyAIController::AEnemyAIController()
 	AIPerceptionComponent->ConfigureSense(*SightConfig);
 	AIPerceptionComponent->SetDominantSense(SightConfig->GetSenseImplementation());
 
-	// 3. 감각 업데이트 이벤트 바인딩
+	// 3. 감지 업데이트 이벤트 바인딩
 	AIPerceptionComponent->OnTargetPerceptionUpdated.AddDynamic(this, &AEnemyAIController::OnTargetDetected);
 }
 
@@ -44,9 +46,16 @@ void AEnemyAIController::OnPossess(APawn* PossessedPawn)
 		UseBlackboard(BBAsset, BlackboardComponent);
 	}
 
+	AEnemyCharacterBase* Enemy = Cast<AEnemyCharacterBase>(PossessedPawn);
+	if (Enemy && BlackboardComponent)
+	{
+		// 캐릭터의 공격 사거리를 BB에 복사
+		BlackboardComponent->SetValueAsFloat(AttackRangeKey, Enemy->GetAttackRange());
+	}
+
 	if (BTAsset)
 	{
-		// 홈 위치 저장
+		// 홈 위치 기록
 		BlackboardComponent->SetValueAsVector(HomeLocationKey, PossessedPawn->GetActorLocation());
 		RunBehaviorTree(BTAsset);
 	}
@@ -54,7 +63,7 @@ void AEnemyAIController::OnPossess(APawn* PossessedPawn)
 
 void AEnemyAIController::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 {
-	// 감지된 대상이 플레이어인지 확인 (태그나 클래스로 구분 가능)
+	// 감지 대상이 플레이어인지 확인
 	if (Actor->ActorHasTag(TEXT("Player")))
 	{
 		if (!BlackboardComponent)
@@ -64,13 +73,13 @@ void AEnemyAIController::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 
 		if (Stimulus.WasSuccessfullySensed())
 		{
-			// 플레이어를 시야에 포착함
+			// 플레이어 감지
 			BlackboardComponent->SetValueAsObject(TargetActorKey, Actor);
 			BlackboardComponent->SetValueAsBool(HasLineOfSightKey, true);
 		}
 		else
 		{
-			// 플레이어가 시야에서 사라짐
+			// 플레이어 시야 상실
 			BlackboardComponent->SetValueAsObject(TargetActorKey, nullptr);
 			BlackboardComponent->SetValueAsBool(HasLineOfSightKey, false);
 		}
