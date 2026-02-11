@@ -70,4 +70,6 @@ protected:
 	static const FName HasLineOfSightKey;
 	// 공격 사거리 키
 	static const FName AttackRangeKey;
+	// 원거리 공격 사거리 키
+	static const FName RangedAttackRangeKey;
 };

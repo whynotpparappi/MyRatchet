@@ -25,6 +25,18 @@ public:
     FBlackboardKeySelector DistanceToTargetKey;
 
     UPROPERTY(EditAnywhere, Category = "Blackboard")
+    FBlackboardKeySelector AttackRangeKey;
+
+    UPROPERTY(EditAnywhere, Category = "Blackboard")
+    FBlackboardKeySelector RangedAttackRangeKey;
+
+    UPROPERTY(EditAnywhere, Category = "Blackboard")
+    FBlackboardKeySelector IsInAttackRangeKey;
+
+    UPROPERTY(EditAnywhere, Category = "Blackboard")
+    FBlackboardKeySelector IsInRangedRangeKey;
+
+    UPROPERTY(EditAnywhere, Category = "Blackboard")
     FBlackboardKeySelector HasLineOfSightKey;
 
     UPROPERTY(EditAnywhere, Category = "Blackboard")
@@ -32,4 +44,11 @@ public:
 
     UPROPERTY(EditAnywhere, Category = "Blackboard")
     FBlackboardKeySelector TimeSinceLastSeenKey;
+
+    // 범위 경계에서 깜빡임을 줄이기 위한 버퍼(히스테리시스)
+    UPROPERTY(EditAnywhere, Category = "Combat", meta = (ClampMin = "0.0"))
+    float MeleeExitBuffer = 40.0f;
+
+    UPROPERTY(EditAnywhere, Category = "Combat", meta = (ClampMin = "0.0"))
+    float RangedExitBuffer = 50.0f;
 };

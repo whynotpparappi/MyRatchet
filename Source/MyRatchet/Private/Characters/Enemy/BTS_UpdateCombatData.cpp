@@ -14,6 +14,10 @@ UBTS_UpdateCombatData::UBTS_UpdateCombatData()
 
     TargetActorKey.AddObjectFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, TargetActorKey), AActor::StaticClass());
     DistanceToTargetKey.AddFloatFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, DistanceToTargetKey));
+    AttackRangeKey.AddFloatFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, AttackRangeKey));
+    RangedAttackRangeKey.AddFloatFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, RangedAttackRangeKey));
+    IsInAttackRangeKey.AddBoolFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, IsInAttackRangeKey));
+    IsInRangedRangeKey.AddBoolFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, IsInRangedRangeKey));
     HasLineOfSightKey.AddBoolFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, HasLineOfSightKey));
     LastKnownLocationKey.AddVectorFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, LastKnownLocationKey));
     TimeSinceLastSeenKey.AddFloatFilter(this, GET_MEMBER_NAME_CHECKED(UBTS_UpdateCombatData, TimeSinceLastSeenKey));
@@ -35,8 +39,19 @@ void UBTS_UpdateCombatData::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
     AActor* TargetActor = Cast<AActor>(BlackboardComp->GetValueAsObject(TargetActorKey.SelectedKeyName));
     if (!TargetActor)
     {
-        // 타겟이 없으면 시야 플래그만 끄고 종료.
-        BlackboardComp->SetValueAsBool(HasLineOfSightKey.SelectedKeyName, false);
+        // 타겟이 없으면 시야/공격 플래그를 끄고 종료.
+        if (HasLineOfSightKey.SelectedKeyName != NAME_None)
+        {
+            BlackboardComp->SetValueAsBool(HasLineOfSightKey.SelectedKeyName, false);
+        }
+        if (IsInAttackRangeKey.SelectedKeyName != NAME_None)
+        {
+            BlackboardComp->SetValueAsBool(IsInAttackRangeKey.SelectedKeyName, false);
+        }
+        if (IsInRangedRangeKey.SelectedKeyName != NAME_None)
+        {
+            BlackboardComp->SetValueAsBool(IsInRangedRangeKey.SelectedKeyName, false);
+        }
         return;
     }
 
@@ -44,21 +59,72 @@ void UBTS_UpdateCombatData::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
     const FVector TargetLocation = TargetActor->GetActorLocation();
 
     const float Distance = FVector::Dist(PawnLocation, TargetLocation);
-    BlackboardComp->SetValueAsFloat(DistanceToTargetKey.SelectedKeyName, Distance);
+    if (DistanceToTargetKey.SelectedKeyName != NAME_None)
+    {
+        BlackboardComp->SetValueAsFloat(DistanceToTargetKey.SelectedKeyName, Distance);
+    }
 
     const bool bHasLOS = AIController->LineOfSightTo(TargetActor);
-    BlackboardComp->SetValueAsBool(HasLineOfSightKey.SelectedKeyName, bHasLOS);
+    if (HasLineOfSightKey.SelectedKeyName != NAME_None)
+    {
+        BlackboardComp->SetValueAsBool(HasLineOfSightKey.SelectedKeyName, bHasLOS);
+    }
+
+    const float MeleeRange = (AttackRangeKey.SelectedKeyName != NAME_None)
+        ? BlackboardComp->GetValueAsFloat(AttackRangeKey.SelectedKeyName)
+        : 0.0f;
+    const float RangedRange = (RangedAttackRangeKey.SelectedKeyName != NAME_None)
+        ? BlackboardComp->GetValueAsFloat(RangedAttackRangeKey.SelectedKeyName)
+        : 0.0f;
+
+    const bool bWasInMelee = (IsInAttackRangeKey.SelectedKeyName != NAME_None)
+        ? BlackboardComp->GetValueAsBool(IsInAttackRangeKey.SelectedKeyName)
+        : false;
+    const bool bWasInRanged = (IsInRangedRangeKey.SelectedKeyName != NAME_None)
+        ? BlackboardComp->GetValueAsBool(IsInRangedRangeKey.SelectedKeyName)
+        : false;
+
+    const float MeleeExit = MeleeRange + MeleeExitBuffer;
+    const float RangedExit = RangedRange + RangedExitBuffer;
+
+    const bool bInMeleeRange = (MeleeRange > 0.0f)
+        ? (bWasInMelee ? (Distance <= MeleeExit) : (Distance <= MeleeRange))
+        : false;
+
+    // 원거리 범위는 근거리와 겹치지 않도록 MeleeRange보다 큰 구간에서만 true
+    const bool bInRangedRange = (RangedRange > 0.0f)
+        ? (bWasInRanged ? (Distance <= RangedExit && Distance > MeleeRange)
+                        : (Distance <= RangedRange && Distance > MeleeRange))
+        : false;
+
+    if (IsInAttackRangeKey.SelectedKeyName != NAME_None)
+    {
+        BlackboardComp->SetValueAsBool(IsInAttackRangeKey.SelectedKeyName, bInMeleeRange);
+    }
+    if (IsInRangedRangeKey.SelectedKeyName != NAME_None)
+    {
+        BlackboardComp->SetValueAsBool(IsInRangedRangeKey.SelectedKeyName, bInRangedRange);
+    }
 
     if (bHasLOS)
     {
         // 시야 확보 시 마지막 위치/경과시간 갱신.
-        BlackboardComp->SetValueAsVector(LastKnownLocationKey.SelectedKeyName, TargetLocation);
-        BlackboardComp->SetValueAsFloat(TimeSinceLastSeenKey.SelectedKeyName, 0.0f);
+        if (LastKnownLocationKey.SelectedKeyName != NAME_None)
+        {
+            BlackboardComp->SetValueAsVector(LastKnownLocationKey.SelectedKeyName, TargetLocation);
+        }
+        if (TimeSinceLastSeenKey.SelectedKeyName != NAME_None)
+        {
+            BlackboardComp->SetValueAsFloat(TimeSinceLastSeenKey.SelectedKeyName, 0.0f);
+        }
     }
     else
     {
         // 시야 상실 시 경과시간 누적.
-        const float PrevTime = BlackboardComp->GetValueAsFloat(TimeSinceLastSeenKey.SelectedKeyName);
-        BlackboardComp->SetValueAsFloat(TimeSinceLastSeenKey.SelectedKeyName, PrevTime + DeltaSeconds);
+        if (TimeSinceLastSeenKey.SelectedKeyName != NAME_None)
+        {
+            const float PrevTime = BlackboardComp->GetValueAsFloat(TimeSinceLastSeenKey.SelectedKeyName);
+            BlackboardComp->SetValueAsFloat(TimeSinceLastSeenKey.SelectedKeyName, PrevTime + DeltaSeconds);
+        }
     }
 }

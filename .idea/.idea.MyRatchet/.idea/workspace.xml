@@ -14,6 +14,24 @@
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/Tags/Enemy.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/Tags/Enemy.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ArrowTrail/Demo/BP_Demo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ArrowTrail/Demo/BP_Demo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MPMECH/BP/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MPMECH/BP/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MPMECH/MESHES/SK_MPMECH_LOD0_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MPMECH/MESHES/SK_MPMECH_LOD0_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MPMECH/MESHES/SM_BULLPUP_LOD0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MPMECH/MESHES/SM_BULLPUP_LOD0.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BB_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BB_Enemy.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BP_MeleeEnemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BP_MeleeEnemy.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BT_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Enemy/BT_Enemy.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/Characters/Heroes/Wraith/Skins/LunarOps/Meshes/Wraith_LunarOps.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/ParagonWraith/Characters/Heroes/Wraith/Skins/LunarOps/Meshes/Wraith_LunarOps.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/0/GT/QJ8LE84E9JZBFP5EZ6JW3L.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/0/GT/QJ8LE84E9JZBFP5EZ6JW3L.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/1/A0/YWGH4SSB5DS85C86APHW9J.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/7/E8/KDK4GP86EM270FBTF5LLIF.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/7/E8/KDK4GP86EM270FBTF5LLIF.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/BTS_UpdateCombatData.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/BTS_UpdateCombatData.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/EnemyAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/EnemyAIController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/BTS_UpdateCombatData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/BTS_UpdateCombatData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyAIController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyCharacterBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +45,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Plugins/Experimental/MoverExamples/Source/MoverExamples/Private/MoverExamplesCharacter.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Developer/TraceInsights/Private/Insights/TaskGraphProfiler/TaskGraphProfilerManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Editor/SceneOutliner/Private/ActorTreeItem.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Editor/SequenceRecorder/Private/ActorRecording.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/AutomationTool/BuildGraph/Tasks/RandomDataTask.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Programs/Shared/EpicGames.Oodle/Sdk/2.9.10/mac/oodle2_version_2.9.10" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/AIModule/Classes/Perception/AISense_Sight.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Private/AutoRTFM/TaggedPtr.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Core/Public/String/FormatStringSan.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/CoreUObject/Private/UObject/CoreRedirects.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -43,10 +63,15 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Private/Components/CharacterMovementComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Private/WorldPartition/RuntimeSpatialHash/RuntimeSpatialHashHLOD.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Public/BonePose.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Public/CharacterMovementComponentAsync.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Foliage/Public/FoliageHelper.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/GameplayTags/Classes/BlueprintGameplayTagLibrary.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/LevelSequence/Private/LevelSequence.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/Developer/RiderLink/Source/RD/thirdparty/spdlog/include/spdlog/fmt/bundled/ranges.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Abilities/GA_EnemyRangedAttack.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/BTTask_ClearFocus.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/BTTask_StopMovement.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/EnemyAIController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Characters/Enemy/EnemyAbilitySystemComponentBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Characters/RAC_AttributeSet.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -59,6 +84,7 @@
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponData.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Private/Weapons/RAC_WeaponManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Abilities/GA_AutoFire.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Abilities/GA_EnemyRangedAttack.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyAIController.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Characters/Enemy/EnemyAbilitySystemComponentBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Characters/RAC_AttributeSet.h" root0="FORCE_HIGHLIGHTING" />
@@ -73,7 +99,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -87,25 +113,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ 프로젝트.MyRatchet.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/KGA/Documents/Unreal Projects/MyRatchet",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CppUnrealEngineOptionsId",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ 프로젝트.MyRatchet.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/KGA/Documents/Unreal Projects/MyRatchet&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CppUnrealEngineOptionsId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C/C++ 프로젝트.MyRatchet">
     <configuration name="MyRatchet" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -255,6 +281,8 @@
       <workItem from="1770277220449" duration="4878000" />
       <workItem from="1770369023615" duration="602000" />
       <workItem from="1770593346859" duration="14630000" />
+      <workItem from="1770681033287" duration="12437000" />
+      <workItem from="1770767379713" duration="14116000" />
     </task>
     <servers />
   </component>

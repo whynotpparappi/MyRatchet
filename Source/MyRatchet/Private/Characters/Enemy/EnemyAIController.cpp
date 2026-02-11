@@ -14,6 +14,7 @@ const FName AEnemyAIController::TargetActorKey(TEXT("TargetActor"));
 const FName AEnemyAIController::HomeLocationKey(TEXT("HomeLocation"));
 const FName AEnemyAIController::HasLineOfSightKey(TEXT("HasLineOfSight"));
 const FName AEnemyAIController::AttackRangeKey(TEXT("AttackRange"));
+const FName AEnemyAIController::RangedAttackRangeKey(TEXT("RangedAttackRange"));
 
 AEnemyAIController::AEnemyAIController()
 {
@@ -24,9 +25,9 @@ AEnemyAIController::AEnemyAIController()
 
 	// 2. 시야(Sight) 설정
 	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SightConfig"));
-	SightConfig->SightRadius = SightRadius;                              // 감지 거리
-	SightConfig->LoseSightRadius = LoseSightRadius;                      // 감지 해제 거리
-	SightConfig->PeripheralVisionAngleDegrees = PeripheralVisionAngleDegrees; // 시야각
+	SightConfig->SightRadius = SightRadius;											// 감지 거리
+	SightConfig->LoseSightRadius = LoseSightRadius;									// 감지 해제 거리
+	SightConfig->PeripheralVisionAngleDegrees = PeripheralVisionAngleDegrees;		// 시야각
 	SightConfig->DetectionByAffiliation.bDetectEnemies = bDetectEnemies;
 	SightConfig->DetectionByAffiliation.bDetectFriendlies = bDetectFriendlies;
 	SightConfig->DetectionByAffiliation.bDetectNeutrals = bDetectNeutrals;
@@ -51,6 +52,8 @@ void AEnemyAIController::OnPossess(APawn* PossessedPawn)
 	{
 		// 캐릭터의 공격 사거리를 BB에 복사
 		BlackboardComponent->SetValueAsFloat(AttackRangeKey, Enemy->GetAttackRange());
+		// 캐릭터의 원거리 공격 사거리를 BB에 복사
+		BlackboardComponent->SetValueAsFloat(RangedAttackRangeKey, Enemy->GetRangedAttackRange());
 	}
 
 	if (BTAsset)
