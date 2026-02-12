@@ -19,6 +19,12 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "Projectile")
     float ProjectileSpeed = 3000.0f;
 
+    UPROPERTY(EditDefaultsOnly, Category = "Projectile", meta = (ClampMin = "0.0"))
+    float ProjectileDamage = 15.0f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Projectile", meta = (ClampMin = "0.0"))
+    float SpawnForwardOffset = 25.0f;
+
     UPROPERTY(EditDefaultsOnly, Category = "Projectile")
     FName MuzzleSocketName = "Muzzle_Enemy";
 

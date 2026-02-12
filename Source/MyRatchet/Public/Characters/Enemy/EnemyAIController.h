@@ -23,6 +23,7 @@ class MYRATCHET_API AEnemyAIController : public AAIController
 
 public:
 	AEnemyAIController();
+	void HandleControlledPawnDeath();
 
 protected:
 	virtual void OnPossess(APawn* PossessedPawn) override;
@@ -72,4 +73,6 @@ protected:
 	static const FName AttackRangeKey;
 	// 원거리 공격 사거리 키
 	static const FName RangedAttackRangeKey;
+	static const FName IsDeadKey;
+	static const FName ActionStateKey;
 };

@@ -10,6 +10,8 @@
 #include "InputActionValue.h"
 #include "Styling/StarshipCoreStyle.h"
 #include "AbilitySystemComponent.h"
+#include "Animation/AnimInstance.h"
+#include "Animation/AnimMontage.h"
 #include "GameplayTagContainer.h"
 #include "Characters/RAC_AttributeSet.h"
 #include "Weapons/RAC_WeaponManager.h"
@@ -134,6 +136,33 @@ void ARAC_CPP_Character::Tick(float DeltaTime)
 	FollowCamera->SetRelativeLocation(NewLocation);
 }
 
+float ARAC_CPP_Character::TakeDamage(
+	float DamageAmount,
+	FDamageEvent const& DamageEvent,
+	AController* EventInstigator,
+	AActor* DamageCauser)
+{
+	if (bIsDead || bInvincible || DamageAmount <= 0.0f)
+	{
+		return 0.0f;
+	}
+
+	const float AppliedDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	const float EffectiveDamage = (AppliedDamage > 0.0f) ? AppliedDamage : DamageAmount;
+
+	if (UAbilitySystemComponent* ASC = GetAbilitySystemComponent())
+	{
+		ASC->ApplyModToAttribute(URAC_AttributeSet::GetHealthAttribute(), EGameplayModOp::Additive, -EffectiveDamage);
+		const float Health = ASC->GetNumericAttribute(URAC_AttributeSet::GetHealthAttribute());
+		if (Health <= 0.0f)
+		{
+			HandleDeath();
+		}
+	}
+
+	return EffectiveDamage;
+}
+
 void ARAC_CPP_Character::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
@@ -142,6 +171,7 @@ void ARAC_CPP_Character::PossessedBy(AController* NewController)
 	if (PS)
 	{
 		PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS,this);
+		BindHealthChangedDelegate();
 		TryInitializeWeapon();
 	}
 	else
@@ -158,7 +188,95 @@ void ARAC_CPP_Character::OnRep_PlayerState()
 	if (PS)
 	{
 		PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS,this);
+		BindHealthChangedDelegate();
 		TryInitializeWeapon();
+	}
+}
+
+void ARAC_CPP_Character::BindHealthChangedDelegate()
+{
+	if (bHealthChangeBound)
+	{
+		return;
+	}
+
+	UAbilitySystemComponent* ASC = GetAbilitySystemComponent();
+	if (!ASC)
+	{
+		return;
+	}
+
+	HealthChangeDelegateHandle = ASC->GetGameplayAttributeValueChangeDelegate(URAC_AttributeSet::GetHealthAttribute())
+		.AddUObject(this, &ARAC_CPP_Character::OnHealthAttributeChanged);
+	bHealthChangeBound = true;
+}
+
+void ARAC_CPP_Character::OnHealthAttributeChanged(const FOnAttributeChangeData& ChangeData)
+{
+	if (bIsDead)
+	{
+		return;
+	}
+
+	if (ChangeData.NewValue <= 0.0f)
+	{
+		HandleDeath();
+	}
+}
+
+void ARAC_CPP_Character::HandleDeath()
+{
+	if (bIsDead)
+	{
+		return;
+	}
+
+	bIsDead = true;
+	bIsDashing = false;
+	bCanDash = false;
+	bInvincible = false;
+	IsAiming = false;
+	IsFireHold = false;
+
+	if (UAbilitySystemComponent* ASC = GetAbilitySystemComponent())
+	{
+		ASC->CancelAllAbilities();
+	}
+
+	if (UCharacterMovementComponent* MoveComp = GetCharacterMovement())
+	{
+		MoveComp->DisableMovement();
+	}
+
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	bool bPlayedDeathMontage = false;
+	if (DeathMontage && GetMesh())
+	{
+		if (UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance())
+		{
+			const float PlayedLength = AnimInstance->Montage_Play(DeathMontage);
+			if (PlayedLength > 0.0f)
+			{
+				FOnMontageEnded EndDelegate;
+				EndDelegate.BindUObject(this, &ARAC_CPP_Character::OnDeathMontageEnded);
+				AnimInstance->Montage_SetEndDelegate(EndDelegate, DeathMontage);
+				bPlayedDeathMontage = true;
+			}
+		}
+	}
+
+	if (!bPlayedDeathMontage)
+	{
+		SetLifeSpan(DeathDespawnDelay);
+	}
+}
+
+void ARAC_CPP_Character::OnDeathMontageEnded(UAnimMontage* Montage, bool bInterrupted)
+{
+	if (Montage == DeathMontage && DeathDespawnDelay >= 0.0f)
+	{
+		SetLifeSpan(DeathDespawnDelay);
 	}
 }
 
@@ -392,6 +510,11 @@ void ARAC_CPP_Character::Shoot(const FInputActionValue& Value)
 
 void ARAC_CPP_Character::HandleShoot(bool bPressed)
 {
+	if (bIsDead)
+	{
+		return;
+	}
+
 	UAbilitySystemComponent* ASC = GetAbilitySystemComponent();
 	if (!ASC)
 	{

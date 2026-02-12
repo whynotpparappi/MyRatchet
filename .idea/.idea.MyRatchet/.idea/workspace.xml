@@ -13,7 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyRatchet.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +265,7 @@
       <workItem from="1770593346859" duration="14630000" />
       <workItem from="1770681033287" duration="12437000" />
       <workItem from="1770767379713" duration="15381000" />
+      <workItem from="1770852130145" duration="23000" />
     </task>
     <servers />
   </component>

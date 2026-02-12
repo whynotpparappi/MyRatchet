@@ -9,6 +9,8 @@
 class ARAC_PlayerState;
 class UTextBlock;
 class UProgressBar;
+class UAbilitySystemComponent;
+struct FOnAttributeChangeData;
 
 UCLASS()
 class MYRATCHET_API URAC_HUD_Widget : public UUserWidget
@@ -42,6 +44,7 @@ protected:
 
 	// 델리게이트 바인드
 	void BindToAttributeSet();
+	void BindToAbilitySystem();
 
 	// 콜백 함수들
 	UFUNCTION()
@@ -53,8 +56,13 @@ protected:
 	UFUNCTION()
 	void OnAmmoChanged(float OldValue, float NewValue);
 
+	void OnHealthAttributeChanged(const FOnAttributeChangeData& ChangeData);
+
 	// UI 업데이트 함수
 	void UpdateHealthUI(float CurrentHealth, float MaxHealth);
 	void UpdateBoltsUI(float CurrentBolts);
 	void UpdateAmmoUI(float CurrentAmmo, float MaxAmmo);
+
+	FDelegateHandle HealthChangedDelegateHandle;
+	bool bHealthDelegateBound = false;
 };

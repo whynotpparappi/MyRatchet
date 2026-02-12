@@ -9,8 +9,10 @@
 #include "Effects/GE_AmmoCost.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/PrimitiveComponent.h"
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
+#include "Combat/RAC_ProjectileBase.h"
 
 
 UGA_AutoFire::UGA_AutoFire()
@@ -149,6 +151,7 @@ void UGA_AutoFire::FireOnce()
 	// 3) 총구에서 목표점을 향한 방향으로 회전
 	FVector ShootDir = (TargetPoint - MuzzleLoc).GetSafeNormal();
 	FRotator SpawnRot = ShootDir.Rotation();
+	const FVector SpawnLoc = MuzzleLoc + (ShootDir * SpawnForwardOffset);
 
 	// (옵션) 너무 가까운 벽에 총구가 박혀있을 때 보정하고 싶으면
 	// MuzzleLoc를 약간 뒤로/앞으로 밀거나, 두 번째 트레이스로 SpawnLoc 조정
@@ -158,9 +161,23 @@ void UGA_AutoFire::FireOnce()
 	Params.Instigator = Cast<APawn>(Avatar);
 	Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-	AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, MuzzleLoc, SpawnRot, Params);
+	AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, SpawnLoc, SpawnRot, Params);
 	if (!Projectile)
 		return;
+
+	if (UPrimitiveComponent* ProjectileRootPrimitive = Cast<UPrimitiveComponent>(Projectile->GetRootComponent()))
+	{
+		ProjectileRootPrimitive->IgnoreActorWhenMoving(Avatar, true);
+		if (APawn* InstigatorPawn = Cast<APawn>(Avatar))
+		{
+			ProjectileRootPrimitive->IgnoreActorWhenMoving(InstigatorPawn, true);
+		}
+	}
+
+	if (ARAC_ProjectileBase* ProjectileBase = Cast<ARAC_ProjectileBase>(Projectile))
+	{
+		ProjectileBase->Damage = ProjectileDamage;
+	}
 
 	if (UProjectileMovementComponent* PMC = Projectile->FindComponentByClass<UProjectileMovementComponent>())
 	{

@@ -4,9 +4,11 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/PrimitiveComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "GameplayTagContainer.h"
+#include "Combat/RAC_ProjectileBase.h"
 
 UGA_EnemyRangedAttack::UGA_EnemyRangedAttack()
 {
@@ -62,15 +64,27 @@ void UGA_EnemyRangedAttack::ActivateAbility(
     }
 
     const FRotator SpawnRot = ShootDir.Rotation();
+    const FVector SpawnLoc = MuzzleLoc + (ShootDir * SpawnForwardOffset);
 
     FActorSpawnParameters Params;
     Params.Owner = Avatar;
     Params.Instigator = Pawn;
     Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-    AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, MuzzleLoc, SpawnRot, Params);
+    AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, SpawnLoc, SpawnRot, Params);
     if (Projectile)
     {
+        if (UPrimitiveComponent* ProjectileRootPrimitive = Cast<UPrimitiveComponent>(Projectile->GetRootComponent()))
+        {
+            ProjectileRootPrimitive->IgnoreActorWhenMoving(Avatar, true);
+            ProjectileRootPrimitive->IgnoreActorWhenMoving(Pawn, true);
+        }
+
+        if (ARAC_ProjectileBase* ProjectileBase = Cast<ARAC_ProjectileBase>(Projectile))
+        {
+            ProjectileBase->Damage = ProjectileDamage;
+        }
+
         if (UProjectileMovementComponent* PMC = Projectile->FindComponentByClass<UProjectileMovementComponent>())
         {
             PMC->Velocity = ShootDir * ProjectileSpeed;

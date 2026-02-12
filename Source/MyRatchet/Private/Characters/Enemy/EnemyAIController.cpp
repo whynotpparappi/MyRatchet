@@ -8,6 +8,7 @@
 #include "BehaviorTree/BlackboardData.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
+#include "Characters/Enemy/YourProjectTypes.h"
 
 // 블랙보드 키 이름 정의
 const FName AEnemyAIController::TargetActorKey(TEXT("TargetActor"));
@@ -15,6 +16,8 @@ const FName AEnemyAIController::HomeLocationKey(TEXT("HomeLocation"));
 const FName AEnemyAIController::HasLineOfSightKey(TEXT("HasLineOfSight"));
 const FName AEnemyAIController::AttackRangeKey(TEXT("AttackRange"));
 const FName AEnemyAIController::RangedAttackRangeKey(TEXT("RangedAttackRange"));
+const FName AEnemyAIController::IsDeadKey(TEXT("IsDead"));
+const FName AEnemyAIController::ActionStateKey(TEXT("ActionState"));
 
 AEnemyAIController::AEnemyAIController()
 {
@@ -54,6 +57,8 @@ void AEnemyAIController::OnPossess(APawn* PossessedPawn)
 		BlackboardComponent->SetValueAsFloat(AttackRangeKey, Enemy->GetAttackRange());
 		// 캐릭터의 원거리 공격 사거리를 BB에 복사
 		BlackboardComponent->SetValueAsFloat(RangedAttackRangeKey, Enemy->GetRangedAttackRange());
+		BlackboardComponent->SetValueAsBool(IsDeadKey, false);
+		BlackboardComponent->SetValueAsEnum(ActionStateKey, static_cast<uint8>(EAIActionState::Idle));
 	}
 
 	if (BTAsset)
@@ -66,6 +71,11 @@ void AEnemyAIController::OnPossess(APawn* PossessedPawn)
 
 void AEnemyAIController::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 {
+	if (BlackboardComponent && BlackboardComponent->GetValueAsBool(IsDeadKey))
+	{
+		return;
+	}
+
 	// 감지 대상이 플레이어인지 확인
 	if (Actor->ActorHasTag(TEXT("Player")))
 	{
@@ -86,4 +96,18 @@ void AEnemyAIController::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 			BlackboardComponent->SetValueAsBool(HasLineOfSightKey, false);
 		}
 	}
+}
+
+void AEnemyAIController::HandleControlledPawnDeath()
+{
+	if (!BlackboardComponent)
+	{
+		return;
+	}
+
+	BlackboardComponent->SetValueAsBool(IsDeadKey, true);
+	BlackboardComponent->SetValueAsEnum(ActionStateKey, static_cast<uint8>(EAIActionState::Dead));
+	BlackboardComponent->ClearValue(TargetActorKey);
+	BlackboardComponent->SetValueAsBool(HasLineOfSightKey, false);
+	StopMovement();
 }

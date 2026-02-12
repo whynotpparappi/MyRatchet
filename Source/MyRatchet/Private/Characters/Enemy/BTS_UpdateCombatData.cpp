@@ -2,6 +2,7 @@
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
+#include "Characters/Enemy/EnemyCharacterBase.h"
 
 UBTS_UpdateCombatData::UBTS_UpdateCombatData()
 {
@@ -34,6 +35,26 @@ void UBTS_UpdateCombatData::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
     if (!AIController || !BlackboardComp || !Pawn)
     {
         return;
+    }
+
+    if (const AEnemyCharacterBase* EnemyPawn = Cast<AEnemyCharacterBase>(Pawn))
+    {
+        if (EnemyPawn->IsDead())
+        {
+            if (HasLineOfSightKey.SelectedKeyName != NAME_None)
+            {
+                BlackboardComp->SetValueAsBool(HasLineOfSightKey.SelectedKeyName, false);
+            }
+            if (IsInAttackRangeKey.SelectedKeyName != NAME_None)
+            {
+                BlackboardComp->SetValueAsBool(IsInAttackRangeKey.SelectedKeyName, false);
+            }
+            if (IsInRangedRangeKey.SelectedKeyName != NAME_None)
+            {
+                BlackboardComp->SetValueAsBool(IsInRangedRangeKey.SelectedKeyName, false);
+            }
+            return;
+        }
     }
 
     AActor* TargetActor = Cast<AActor>(BlackboardComp->GetValueAsObject(TargetActorKey.SelectedKeyName));

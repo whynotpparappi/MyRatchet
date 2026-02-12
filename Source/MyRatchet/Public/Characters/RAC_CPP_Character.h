@@ -12,6 +12,8 @@ class USpringArmComponent;
 class UCameraComponent;
 class URAC_WeaponManager;
 class URAC_WeaponData;
+class UAnimMontage;
+struct FOnAttributeChangeData;
 
 UCLASS()
 
@@ -33,6 +35,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual float TakeDamage(
+		float DamageAmount,
+		struct FDamageEvent const& DamageEvent,
+		class AController* EventInstigator,
+		AActor* DamageCauser) override;
 
 	virtual void PossessedBy(AController* NewController) override;
 	
@@ -91,6 +98,11 @@ private:
 
 	bool bWeaponInitialized = false;
 	void TryInitializeWeapon();
+
+	void BindHealthChangedDelegate();
+	void OnHealthAttributeChanged(const FOnAttributeChangeData& ChangeData);
+	void HandleDeath();
+	void OnDeathMontageEnded(UAnimMontage* Montage, bool bInterrupted);
 	
 	void StartDash();
 	void TickDash(float DeltaTime);
@@ -145,6 +157,18 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stat")
 	bool IsTabHold = false;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Stat", meta=(AllowPrivateAccess="true"))
+	bool bIsDead = false;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Death", meta=(AllowPrivateAccess="true"))
+	UAnimMontage* DeathMontage = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Death", meta=(AllowPrivateAccess="true", ClampMin="0.0"))
+	float DeathDespawnDelay = 2.0f;
+
+	bool bHealthChangeBound = false;
+	FDelegateHandle HealthChangeDelegateHandle;
 	
 public:
 	void Move(const FInputActionValue& Value);

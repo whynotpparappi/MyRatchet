@@ -3,6 +3,7 @@
 #include "Widgets/RAC_HUD_Widget.h"
 #include "Frameworks/RAC_PlayerState.h"
 #include "Characters/RAC_AttributeSet.h"
+#include "AbilitySystemComponent.h"
 #include "Components/TextBlock.h"
 #include "Components/ProgressBar.h"
 
@@ -18,6 +19,7 @@ void URAC_HUD_Widget::NativeConstruct()
 		if (OwningPlayerState)
 		{
 			BindToAttributeSet();
+			BindToAbilitySystem();
 		}
 	}
 }
@@ -30,6 +32,15 @@ void URAC_HUD_Widget::NativeDestruct()
 		OwningPlayerState->AttributeSet->OnHealthChanged.RemoveDynamic(this, &URAC_HUD_Widget::OnHealthChanged);
 		OwningPlayerState->AttributeSet->OnBoltsChanged.RemoveDynamic(this, &URAC_HUD_Widget::OnBoltsChanged);
 		OwningPlayerState->AttributeSet->OnAmmoChanged.RemoveDynamic(this, &URAC_HUD_Widget::OnAmmoChanged);
+	}
+
+	if (bHealthDelegateBound && OwningPlayerState)
+	{
+		if (UAbilitySystemComponent* ASC = OwningPlayerState->GetAbilitySystemComponent())
+		{
+			ASC->GetGameplayAttributeValueChangeDelegate(URAC_AttributeSet::GetHealthAttribute()).Remove(HealthChangedDelegateHandle);
+		}
+		bHealthDelegateBound = false;
 	}
 
 	Super::NativeDestruct();
@@ -55,6 +66,24 @@ void URAC_HUD_Widget::BindToAttributeSet()
 	UpdateAmmoUI(AttributeSet->GetAmmo(), AttributeSet->GetMaxAmmo());
 }
 
+void URAC_HUD_Widget::BindToAbilitySystem()
+{
+	if (!OwningPlayerState || bHealthDelegateBound)
+	{
+		return;
+	}
+
+	UAbilitySystemComponent* ASC = OwningPlayerState->GetAbilitySystemComponent();
+	if (!ASC)
+	{
+		return;
+	}
+
+	HealthChangedDelegateHandle = ASC->GetGameplayAttributeValueChangeDelegate(URAC_AttributeSet::GetHealthAttribute())
+		.AddUObject(this, &URAC_HUD_Widget::OnHealthAttributeChanged);
+	bHealthDelegateBound = true;
+}
+
 void URAC_HUD_Widget::OnHealthChanged(float OldValue, float NewValue)
 {
 	if (OwningPlayerState && OwningPlayerState->AttributeSet)
@@ -75,6 +104,15 @@ void URAC_HUD_Widget::OnAmmoChanged(float OldValue, float NewValue)
 	{
 		float MaxAmmo = OwningPlayerState->AttributeSet->GetMaxAmmo();
 		UpdateAmmoUI(NewValue, MaxAmmo);
+	}
+}
+
+void URAC_HUD_Widget::OnHealthAttributeChanged(const FOnAttributeChangeData& ChangeData)
+{
+	if (OwningPlayerState && OwningPlayerState->AttributeSet)
+	{
+		const float MaxHealth = OwningPlayerState->AttributeSet->GetMaxHealth();
+		UpdateHealthUI(ChangeData.NewValue, MaxHealth);
 	}
 }
 
