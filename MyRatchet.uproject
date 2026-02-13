@@ -30,11 +30,6 @@
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/362651520df94e4fa65492dbcba44ae2"
 		},
 		{
-			"Name": "LanguageSwitch",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/dbdee38690c74f28861537f1188b3605"
-		},
-		{
 			"Name": "GameplayAbilities",
 			"Enabled": true
 		}
