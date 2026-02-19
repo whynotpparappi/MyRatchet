@@ -12,7 +12,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="" />
+    <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYRatchet/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/MYRatchet/.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYRatchet/EnemyAIController.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyRatchet.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_other_mds/최종점검.md" beforeDir="false" afterPath="$PROJECT_DIR$/_other_mds/최종점검.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,6 +279,7 @@
       <workItem from="1770852130145" duration="23000" />
       <workItem from="1770852189745" duration="13902000" />
       <workItem from="1771456280286" duration="9451000" />
+      <workItem from="1771540291252" duration="1024000" />
     </task>
     <servers />
   </component>

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Abilities/GA_AutoFire.md",
+                "file": "Abilities/GA_EnemyRangedAttack.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GA_AutoFire"
+              "title": "GA_EnemyRangedAttack"
             }
           }
         ]
@@ -185,9 +185,11 @@
   },
   "active": "afbd01e6f398dde4",
   "lastOpenFiles": [
-    "Abilities/GA_EnemyRangedAttack.md",
-    "EnemyAIController.md",
     "Abilities/GA_AutoFire.md",
+    "Characters/Enemy",
+    "EnemyAIController.md",
+    "Characters",
+    "Abilities/GA_EnemyRangedAttack.md",
     "무제.canvas",
     "Abilities/무제 2.md",
     "Abilities",
@@ -199,8 +201,6 @@
     "무제 6.base",
     "무제 5.base",
     "무제 4.base",
-    "무제 3.base",
-    "무제 2.base",
     "무제 3.canvas",
     "무제 2.canvas",
     "무제 1.canvas",
