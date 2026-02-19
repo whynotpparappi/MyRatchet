@@ -8,6 +8,7 @@
 #include "GA_AutoFire.generated.h"
 
 class UGameplayEffect;
+class USoundBase;
 
 
 
@@ -46,6 +47,15 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Trace")
 	TEnumAsByte<ECollisionChannel> AimTraceChannel = RatchetCollisionChannels::FireChannel;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Audio")
+	TObjectPtr<USoundBase> FireSound = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Audio", meta = (ClampMin = "0.0"))
+	float FireSoundVolume = 1.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Audio", meta = (ClampMin = "0.1"))
+	float FireSoundPitch = 1.0f;
 	
 
 	virtual void ActivateAbility(

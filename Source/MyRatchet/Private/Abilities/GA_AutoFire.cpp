@@ -12,6 +12,7 @@
 #include "Components/PrimitiveComponent.h"
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
+#include "Kismet/GameplayStatics.h"
 #include "Combat/RAC_ProjectileBase.h"
 
 
@@ -124,8 +125,8 @@ void UGA_AutoFire::FireOnce()
 	if (GetCrosshairRay(PC, AimStart, AimDir))
 	{
 		const FVector AimEnd = AimStart + AimDir * AimTraceDistance;
-		DrawDebugLine(World, AimStart, TargetPoint, FColor::Green, false, 0.05f, 0, 1.0f);
-		DrawDebugPoint(World, TargetPoint, 6.0f, FColor::Red, false, 0.05f);
+		//DrawDebugLine(World, AimStart, TargetPoint, FColor::Green, false, 0.05f, 0, 1.0f);
+		//DrawDebugPoint(World, TargetPoint, 6.0f, FColor::Red, false, 0.05f);
 	}
 
 	// 2) 총구 트랜스폼 (너 구조에 맞게 “무기 메쉬의 소켓”에서 가져오면 됨)
@@ -164,6 +165,11 @@ void UGA_AutoFire::FireOnce()
 	AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, SpawnLoc, SpawnRot, Params);
 	if (!Projectile)
 		return;
+
+	if (FireSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, FireSound, MuzzleLoc, FireSoundVolume, FireSoundPitch);
+	}
 
 	if (UPrimitiveComponent* ProjectileRootPrimitive = Cast<UPrimitiveComponent>(Projectile->GetRootComponent()))
 	{

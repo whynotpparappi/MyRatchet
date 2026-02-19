@@ -4,6 +4,8 @@
 #include "Abilities/GameplayAbility.h"
 #include "GA_EnemyRangedAttack.generated.h"
 
+class USoundBase;
+
 UCLASS()
 class MYRATCHET_API UGA_EnemyRangedAttack : public UGameplayAbility
 {
@@ -39,6 +41,15 @@ protected:
     // 타겟 조준 위치 보정(필요 시)
     UPROPERTY(EditDefaultsOnly, Category = "Target")
     float TargetLocationZOffset = 0.0f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Audio")
+    TObjectPtr<USoundBase> FireSound = nullptr;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Audio", meta = (ClampMin = "0.0"))
+    float FireSoundVolume = 1.0f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Audio", meta = (ClampMin = "0.1"))
+    float FireSoundPitch = 1.0f;
 
     virtual void ActivateAbility(
         const FGameplayAbilitySpecHandle Handle,

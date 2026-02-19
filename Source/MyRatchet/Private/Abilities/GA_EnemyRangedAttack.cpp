@@ -8,6 +8,7 @@
 #include "Engine/World.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "GameplayTagContainer.h"
+#include "Kismet/GameplayStatics.h"
 #include "Combat/RAC_ProjectileBase.h"
 
 UGA_EnemyRangedAttack::UGA_EnemyRangedAttack()
@@ -74,6 +75,11 @@ void UGA_EnemyRangedAttack::ActivateAbility(
     AActor* Projectile = World->SpawnActor<AActor>(ProjectileClass, SpawnLoc, SpawnRot, Params);
     if (Projectile)
     {
+        if (FireSound)
+        {
+            UGameplayStatics::PlaySoundAtLocation(this, FireSound, MuzzleLoc, FireSoundVolume, FireSoundPitch);
+        }
+
         if (UPrimitiveComponent* ProjectileRootPrimitive = Cast<UPrimitiveComponent>(Projectile->GetRootComponent()))
         {
             ProjectileRootPrimitive->IgnoreActorWhenMoving(Avatar, true);
