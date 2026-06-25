@@ -13,15 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dwarven_city/Level/L_Dwarf_City.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dwarven_city/Level/L_Dwarf_City.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_M_RAC/Character/Bp_RAC_CPP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/6/8B/QR5DXBPKUZVDRZ63P2F6MT.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/7/E8/KDK4GP86EM270FBTF5LLIF.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/7/E8/KDK4GP86EM270FBTF5LLIF.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/9/0V/9C1PHHMKFJ8C92L9QV44WK.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/B/YG/10CARHKF0CP2B4NWAQJMZB.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/_M_RAC/Maps/Basic_Map/F/56/YJSZY0FWL0A53UADZ5I5DF.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYRatchet/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/MYRatchet/.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet.dir/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "whynotpparappi"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/whynotpparappi/MyRatchet.git",
+    "accountId": "cf2c51e0-8650-4f65-a28d-e2d58468f7a7"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Plugins/Experimental/MoverExamples/Source/MoverExamples/Private/MoverExamplesCharacter.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Developer/TraceInsights/Private/Insights/TaskGraphProfiler/TaskGraphProfilerManager.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -110,25 +114,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ 프로젝트.MyRatchet.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/KGA/Documents/Unreal Projects/MyRatchet&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CppUnrealEngineOptionsId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ 프로젝트.MyRatchet.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/kim30/Documents/Unreal Projects/MyRatchet/MyRatchet.sln",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CppUnrealEngineOptionsId",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ 프로젝트.MyRatchet">
     <configuration name="MyRatchet" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -284,6 +288,7 @@
       <workItem from="1770852189745" duration="13902000" />
       <workItem from="1771456280286" duration="9451000" />
       <workItem from="1771540291252" duration="10607000" />
+      <workItem from="1782397163162" duration="340000" />
     </task>
     <servers />
   </component>

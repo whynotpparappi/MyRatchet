@@ -21,6 +21,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "whynotpparappi"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/whynotpparappi/MyRatchet.git",
+    "accountId": "cf2c51e0-8650-4f65-a28d-e2d58468f7a7"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -131,6 +143,7 @@
       <workItem from="1771168854132" duration="599000" />
       <workItem from="1771237932555" duration="4943000" />
       <workItem from="1771429653553" duration="945000" />
+      <workItem from="1782396979643" duration="178000" />
     </task>
     <servers />
   </component>
