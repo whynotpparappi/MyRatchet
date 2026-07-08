@@ -11,9 +11,65 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a2c5bfe4-e028-48bc-9345-b871c592321e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRatchet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vsconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.vsconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyRatchet.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/MyRatchet.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/CODE_OF_CONDUCT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Config/FilterPlugin.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/Marketplace_Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/Troubleshooting.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/Visual Studio Integration Tool Documentation.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/images/configuration_page.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/images/ide_support_ue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/images/test_explorer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Docs/images/test_options.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/SECURITY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/SUPPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Scripts/Package-Plugin.ps1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Scripts/SignDetached.proj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Scripts/packages.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioBlueprintDebuggerHelper/Private/VisualStudioBlueprintDebuggerHelperModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioBlueprintDebuggerHelper/Private/VisualStudioBlueprintDebuggerHelperModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioBlueprintDebuggerHelper/VisualStudioBlueprintDebuggerHelper.Build.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/BlueprintAssetHelper.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/BlueprintAssetHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/BlueprintReferencesCommandlet.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/BlueprintReferencesCommandlet.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/FSmartBSTR.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VSServerCommandlet.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VSServerCommandlet.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VSTestAdapterCommandlet.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VSTestAdapterCommandlet.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioTools.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioToolsBlueprintBreakpointExtension.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioToolsBlueprintBreakpointExtension.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioToolsCommandlet.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioToolsCommandlet.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioToolsCommandletBase.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Private/VisualStudioToolsCommandletBase.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/Public/VisualStudioTools.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/Source/VisualStudioTools/VisualStudioTools.Build.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/VisualStudioTools.uplugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/azure-pipelines/Support-extra-UBT-args-in-UAT.BuildPlugin.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/azure-pipelines/TSAOptions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/azure-pipelines/compliance.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/azure-pipelines/release.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/VisualStudioTools/build.proj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchet.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchet.Target.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRatchetEditor.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRatchetEditor.Target.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,21 +79,24 @@
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="5062" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "whynotpparappi"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;whynotpparappi&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/whynotpparappi/MyRatchet.git",
-    "accountId": "cf2c51e0-8650-4f65-a28d-e2d58468f7a7"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/whynotpparappi/MyRatchet.git&quot;,
+    &quot;accountId&quot;: &quot;cf2c51e0-8650-4f65-a28d-e2d58468f7a7&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Plugins/Experimental/MoverExamples/Source/MoverExamples/Private/MoverExamplesCharacter.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.4/Engine/Source/Developer/TraceInsights/Private/Insights/TaskGraphProfiler/TaskGraphProfilerManager.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -98,7 +157,70 @@
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponData.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MyRatchet/Public/Weapons/RAC_WeaponManager.h" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0" />
+      <entry key="M15" value="1.0" />
+      <entry key="M30" value="1.0" />
+      <entry key="H1" value="1.0" />
+      <entry key="H2" value="1.0" />
+      <entry key="H4" value="1.0" />
+      <entry key="D1" value="1.0" />
+      <entry key="W1" value="1.0" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.045752677998300795" />
+      <entry key="MS500" value="0.5396141182522136" />
+      <entry key="S2" value="0.8570789442280999" />
+      <entry key="S5" value="0.9401742025091261" />
+      <entry key="S10" value="0.9696258054059442" />
+      <entry key="S30" value="0.9897709926395851" />
+      <entry key="S60" value="0.994872349922132" />
+      <entry key="M2" value="0.9974328799082833" />
+      <entry key="M5" value="0.9989723600661096" />
+      <entry key="M10" value="0.999486047959705" />
+      <entry key="M15" value="0.9996573359501305" />
+      <entry key="M30" value="0.9998286532952186" />
+      <entry key="H1" value="0.9999143229773332" />
+      <entry key="H2" value="0.9999571605710583" />
+      <entry key="H4" value="0.9999785800561222" />
+      <entry key="D1" value="0.9999964299774912" />
+      <entry key="W1" value="0.9999994899960042" />
+    </decayedShown>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
   </component>
@@ -118,10 +240,15 @@
   "keyToString": {
     "C/C++ 프로젝트.MyRatchet.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/kim30/Documents/Unreal Projects/MyRatchet/MyRatchet.sln",
     "node.js.detected.package.eslint": "true",
@@ -129,7 +256,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CppUnrealEngineOptionsId",
+    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -289,6 +416,8 @@
       <workItem from="1771456280286" duration="9451000" />
       <workItem from="1771540291252" duration="10607000" />
       <workItem from="1782397163162" duration="340000" />
+      <workItem from="1782652687432" duration="1144000" />
+      <workItem from="1782654320283" duration="2120000" />
     </task>
     <servers />
   </component>
